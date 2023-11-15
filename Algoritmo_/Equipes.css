@@ -1,0 +1,278 @@
+.body {
+    height: 98.3vh;
+    background-color: black;
+    overflow-x: hidden;
+    overflow: hidden;
+
+}
+
+.body .container-vermelho {
+    background: #CB0006;
+    position: absolute;
+    height: auto;
+    width: 30px;
+    inset: 0 auto 0 0;
+}
+
+.ul {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    position: top;
+    height: 100px;
+    word-spacing: 3px;
+    left: 10px;
+    align-items: center;
+
+
+}
+
+.container-header {
+    width: auto;
+    height: auto;
+    display: flex;
+    padding-left: 30px;
+    align-self: center;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-header .ul {
+    position: absolute;
+    width: 1700px;
+    display: flex;
+    top: 1px;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.container-header a {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+
+
+#titulo {
+
+    font-size: 40px;
+    align-self: center;
+    position: relative;
+    top: 1px;
+    padding-left: 30px;
+    justify-content: center;
+    align-self: center;
+
+}
+
+#image {
+    display: flex;
+    align-self: center;
+    position: relative;
+    top: auto;
+    padding-left: 15px;
+}
+
+.cadastro-logo {
+    position: relative;
+    top: 44px;
+    left: 848px;
+
+}
+
+#aqui a {
+    color: #CB0006;
+}
+/* --------------------------------------------------------------------------------------------------------------- */
+.imagem {
+    position: absolute;
+    top: 126px;
+    left: 170px;
+    font-weight: bold;
+    font-size: 40px;
+    
+}
+
+.Hass {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    background-color: #CB0006;
+    justify-content: start;
+    top: -764px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+   
+}
+
+.RedBull {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #3A52B4;
+    top: -757px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.Williams {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #3A93B4;
+    top: -750px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.AlfaRomeo {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #036631;
+    top: -744px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.AlphaTauri {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #0A174B;
+    top: -736px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.AstonMartin {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #178D79;
+    top: -727px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.Mclaren {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #EC8A18;
+    top: -717px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.Ferrari {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #CB0006;
+    top: -707px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.Mercedes {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #1FC6C6;
+    top: -697px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+}
+
+.Alpine {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    width: 56vw;
+    height: 7.2vh;
+    justify-content: start;
+    background-color: #FA6BCE;
+    top: -689px;
+    left: 520px;
+    color: white;
+    font-weight: bold;
+    justify-content: center;
+   
+}
+
+.texto{
+    position: relative;
+    top: 12px;
+    left: 150px;
+    text-decoration: none;
+    color: white;
+    transition: font-size 0.1s ease;
+
+}
+.sticker{
+    position: absolute;
+    top: -40px ;
+    left: 20px;
+}
+.sticker2{
+    position: absolute;
+    top: -52px ;
+    left: 20px;
+   
+}
+.sticker5{
+    position: absolute;
+    top: -52px ;
+    left: 20px;
+}
+.sticker8{
+    position: absolute;
+    top: -52px ;
+    left: 350px;
+}
+.sticker9{
+    position: absolute;
+    top: -52px ;
+    left: 20px; 
+}
+.texto:hover{
+    font-size: 1.2em;
+    transform: scale(1.0);
+    box-shadow: 0 0 8px #dfdede00;
+
+    
+}

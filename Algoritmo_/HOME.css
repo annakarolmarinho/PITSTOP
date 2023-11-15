@@ -1,0 +1,158 @@
+.body {
+    height: 98.4vh;
+    background-color: black;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(png/ferrari.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+
+
+}
+
+.body .container-vermelho {
+    background: #CB0006;
+    position: absolute;
+    height: auto;
+    width: 30px;
+    inset: 0 auto 0 0;
+}
+
+.ul {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    position: top;
+    height: 100px;
+    word-spacing: 3px;
+    left: 10px;
+    align-items: center;
+
+
+}
+
+.container-header {
+    width: 1770px;
+    height: auto;
+    display: flex;
+    padding-left: 30px;
+    align-self: center;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-header .ul {
+    position: absolute;
+    width: 1700px;
+    display: flex;
+    top: 1px;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.container-header a {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+
+
+#titulo {
+
+    font-size: 40px;
+    align-self: center;
+    position: relative;
+    top: 1px;
+    padding-left: 30px;
+    justify-content: center;
+    align-self: center;
+
+}
+
+#image {
+    display: flex;
+    align-self: center;
+    position: relative;
+    top: auto;
+    padding-left: 15px;
+}
+
+.cadastro-logo {
+    position: relative;
+   top: 44px;
+   left: 900px;
+}
+
+.body .text-box {
+    position: absolute;
+    display: flex;
+    color: white;
+    align-content: center;
+    font-size: 40px;
+    padding-left: 200px;
+    font-family: 'Oswald', sans-serif;
+    top: 200px;
+
+}
+
+.carro {
+    display: flex;
+    float: right;
+    position: relative;
+    right: 350px;
+    top: 300px;
+}
+
+
+.botao1 a {
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    top: 710px;
+    left: 1000px;
+    border-radius: 80px;
+    vertical-align: middle;
+    background-color: white;
+    width: 310px;
+    height: 50px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-color: black;
+    color: black;
+    font-size: 110%;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.botao2 a{
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    top: 690px;
+    left: 500px;
+    border-radius: 60px;
+    vertical-align: middle;
+    color: black;
+    width: 510%;
+    height: 90px;
+    cursor: pointer;
+    border-color: black;
+    font-size: 110%;
+    overflow: hidden;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: white;
+    padding: 10px ;
+
+}
+
+
+#aqui a {
+    color: #CB0006;
+}
