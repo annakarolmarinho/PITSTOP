@@ -110,6 +110,18 @@
     top: 300px;
 }
 
+.botao1 a:hover{
+    background-color: #b70000;
+    top: 700px;
+    color: white;
+    box-shadow: 0px 0px 10px 5px white;
+}
+.botao2 a:hover{
+    background-color: #b70000;
+    top: 700px;
+    color: white;
+    box-shadow: 0px 0px 10px 5px white;
+}
 
 .botao1 a {
     font-family: 'Oswald', sans-serif;
@@ -129,8 +141,8 @@
     text-decoration: none;
     font-weight: bold;
     padding: 10px;
+    transition: background-color 0.3s ease, top 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
-
 .botao2 a{
     font-family: 'Oswald', sans-serif;
     position: relative;
@@ -149,7 +161,7 @@
     font-weight: bold;
     background-color: white;
     padding: 10px ;
-
+    transition: background-color 0.3s ease, top 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 

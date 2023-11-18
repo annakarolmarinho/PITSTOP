@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="png/favicon.ico">
+    <title>PITSTOP |Cadastro/Login </title>
+    <link rel="stylesheet" href="Cadastro_login.css">
+</head>
+
+<body >
+
+    <div class="header">
+        <div class="container-vermelho"> </div>
+        <div class="container-header">
+            <ul class="ul">
+                <li class="item"><a href="HOME.html"> HOME </a></li>
+                <li class="item"><a href="Equipes.html"> EQUIPES </a></li>
+                <li class="item"><a href="Igualdade.html"> IGUALDADE </a></li>
+                <li class="item"><a href=""> ENERGIA LIMPA </a></li>
+                <li class="item"><a href=""> QUIZTIME </a></li>
+                <li class="item"><a href=""> CIRCUITOS </a></li>
+                <li class="item"><a href=""> SOBRE MIM </a></li>
+                <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
+
+            </ul>
+            <div id="aqui" class="cadastro-logo">
+                <a href="Cadastro_login.html"><img id="image2" src="png/cadastro.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content conteudo1">
+            <div class="primeira-coluna">
+                <h2 class="titulo titulo1">Bem-vindo de volta!</h2>
+                <p class="descricao descricao-primeiro">Para se manter com a gente</p>
+                <p class="descricao descricao-primeiro ">por favor logue com suas informações pessoais.</p>
+                <button id="btnEntrar" class="botao botao-a">Login</button>
+            </div>
+            <div class="segunda-coluna">
+                <h2 class="titulo titulo2">Crie uma conta.</h2>
+                <div class="rede-social">
+                    <ul class="lista-sociais">
+                        <a class="link-rede-social" href="https://www.facebook.com/?locale=pt_BR">
+                            <li class="item-midia"></li>
+                        </a>
+                        <a class="link-rede-social" href="https://www.google.com/intl/pt-BR/gmail/about/">
+                            <li class="item-midia"></li>
+                        </a>
+                        <a class="link-rede-social" href="https://br.linkedin.com/">
+                            <li class="item-midia"></li>
+                        </a>
+                    </ul>
+                </div>
+                <p class="descricao descricao-segundo"> ou use seu email para o registro:</p>
+                <form class="formulario">
+
+                    <label for="">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Nome Completo">
+                    </label>
+                    <label for="">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="E-mail">
+                    </label>
+                    <label for="">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="senha">
+                    </label>
+                
+                    <button  class="botao botao-b"><p class="texto">cadastrar</p></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="content conteudo2">
+            <div class="primeira-coluna">
+                <h2 class="titulo titulo1">Olá amigo!</h2>
+                <p class="descricao descricao-primeiro">Insira seus dados pessoais</p>
+                <p class="descricao descricao-primeiro">e comece essa jornada conosco</p>
+                <button id="cadastrar" class="botao botao-a"><p class="texto">Cadastrar</p></button>
+            </div>
+            <div class="segunda-coluna">
+                <h2 class="titulo titulo2"> Logue no PITSTOP.</h2>
+                <div class="rede-social">
+                    <ul class="lista-sociais">
+                        <a class="link-rede-social" href="https://www.facebook.com/?locale=pt_BR">
+                            <li class="item-midia"></li>
+                        </a>
+                        <a class="link-rede-social" href="https://www.google.com/intl/pt-BR/gmail/about/">
+                            <li class="item-midia"></li>
+                        </a>
+                        <a class="link-rede-social" href="https://br.linkedin.com/">
+                            <li class="item-midia"></li>
+                        </a>
+                    </ul>
+                </div>
+                <p class="descricao descricao-segundo"> ou use seu email para o registro:</p>
+                <form class="formulario">
+                    <label for="">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Nome Completo">
+                    </label>
+                    <label for="">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" placeholder="E-mail">
+                    </label>
+                    <label for="">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="senha">
+                    </label>
+                    <a class="senha" href="#">esqueceu sua senha?</a>
+                    <button class="botao botao-b">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btnEntrar = document.querySelector("#btnEntrar");
+        var btnCadastrar = document.querySelector("#cadastrar");
+         
+        var body = document.querySelector("body")
+    
+        btnEntrar.addEventListener("click", function(){
+            body.className = "entrar-js";
+        })
+    
+        btnCadastrar.addEventListener("click", function(){
+            body.className = "cadastrar-js";
+        })
+    
+    </script>
+</body>
+</html>
