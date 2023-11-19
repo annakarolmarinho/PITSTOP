@@ -1,4 +1,7 @@
-
+function changeContentPageToQuiz() {
+    var contentAll = document.getElementById('content-all')
+    contentAll.remove();
+}
 
 var questions = [
     {

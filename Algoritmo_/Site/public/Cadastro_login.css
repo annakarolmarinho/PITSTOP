@@ -2,7 +2,7 @@ body {
     height: 98.3vh;
     background-color: black;
     overflow-x: hidden;
-    overflow: hidden;
+    overflow-y: hidden;
     font-family: 'Oswald', sans-serif;
 
 }
@@ -23,7 +23,7 @@ body .container-vermelho {
     position: top;
     height: 100px;
     word-spacing: 3px;
-    left: 10px;
+    left: 50px;
     align-items: center;
 
 
@@ -35,7 +35,7 @@ body .container-vermelho {
     display: flex;
     padding-left: 30px;
     align-self: center;
-    top: 10px;
+    top: 25px;
     display: flex;
     justify-content: center;
 }
@@ -44,7 +44,7 @@ body .container-vermelho {
     position: absolute;
     width: 1700px;
     display: flex;
-    top: 1px;
+    top: 15px;
     flex-direction: row;
     justify-content: space-evenly;
 
@@ -84,7 +84,7 @@ body .container-vermelho {
 
 .cadastro-logo {
     position: relative;
-    top: 44px;
+    top: 50px;
     left: 848px;
 
 }
@@ -154,7 +154,7 @@ body .container-vermelho {
     height: 45px;
     width: 100%;
     border: none;
-    background-color: #bbbbbb;
+    background-color: #ecf0f1;
     margin: 8px;
 }
 
@@ -267,7 +267,7 @@ input:-webkit-autofill {
 
 .link-rede-social:hover .item-midia {
     background-color: #CB0006;
-    color: white;
+    color: rgb(255, 255, 255);
     border-color: #CB0006;
 }
 
@@ -286,6 +286,14 @@ input:-webkit-autofill {
     margin-left: 10px;
 }
 
+.label-input {
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    margin: 9px;
+    text-indent: 12px;
+}
+
 .texto {
     position: relative;
     align-self: center;
@@ -298,20 +306,24 @@ input:-webkit-autofill {
     position: absolute;
     display: flex;
 }
+
 .conteudo2 .primeira-coluna {
     order: 2;
     z-index: -1;
 }
+
 .conteudo2 .segunda-coluna {
     order: 1;
     z-index: -1;
 }
+
 .password {
     color: #34495e;
     font-size: 14px;
     margin: 15px 0;
     text-align: center;
 }
+
 .password::first-letter {
     text-transform: capitalize;
 }
@@ -325,6 +337,7 @@ input:-webkit-autofill {
 .entrar-js .conteudo2 .segunda-coluna {
     z-index: 11;
 }
+
 .entrar-js .conteudo2 .primeira-coluna {
     z-index: 13;
 }
@@ -335,13 +348,13 @@ input:-webkit-autofill {
     border-bottom-left-radius: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    animation: slidein 1.3s ; 
+    animation: slidein 1.3s;
 
     z-index: 12;
 }
 
 .cadastrar-js .content::before {
-    animation: slideout 1.3s; 
+    animation: slideout 1.3s;
 
     z-index: 12;
 }
@@ -356,7 +369,7 @@ input:-webkit-autofill {
 }
 
 .cadastrar-js .conteudo1 .primeira-coluna {
-    z-index: 13;    
+    z-index: 13;
 }
 
 
@@ -365,13 +378,13 @@ input:-webkit-autofill {
 
     z-index: -1;
     position: relative;
-    animation: deslocamentoEsq 1.3s; 
+    animation: deslocamentoEsq 1.3s;
 }
 
 .cadastrar-js .conteudo2 .segunda-coluna {
     position: relative;
     z-index: -1;
-    animation: deslocamentoDir 1.3s; 
+    animation: deslocamentoDir 1.3s;
 }
 
 /*---------- animação css ------*/
@@ -387,13 +400,13 @@ input:-webkit-autofill {
     25% {
         left: -80px;
         opacity: .5;
-        
+
     }
 
     50% {
         left: -100px;
         opacity: .2;
-        
+
     }
 
     to {
@@ -413,12 +426,12 @@ input:-webkit-autofill {
 
     25% {
         left: 80px;
-       
+
     }
 
     50% {
         left: 100px;
-       
+
     }
 
     to {
@@ -485,7 +498,3 @@ input:-webkit-autofill {
         width: 40%;
     }
 }
-
-
-
-

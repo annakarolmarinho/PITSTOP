@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="png/favicon.ico">
-    <title>PITSTOP |Equipes </title>
+    <title>PITSTOP |QuizTime </title>
     <link rel="stylesheet" href="QuizTime.css">
     <script src="quiz.js" async></script>
 </head>
 
-<body class="body">
+<body class="body" id="body">
 
     <div class="header">
         <div class="container-vermelho"> </div>
@@ -21,8 +21,8 @@
                 <li class="item"><a href="Igualdade.html"> IGUALDADE </a></li>
                 <li class="item"><a href="EnergiaLimpa.html"> ENERGIA LIMPA </a></li>
                 <li id="aqui" class="item"><a href="QuizTime.html"> QUIZTIME </a></li>
-                <li class="item"><a href=""> CIRCUITOS </a></li>
-                <li class="item"><a href=""> SOBRE MIM </a></li>
+                <li class="item"><a href="circuitosMonaco.html"> CIRCUITOS </a></li>
+                <li class="item"><a href="sobreMim.html"> SOBRE MIM </a></li>
                 <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
 
             </ul>
@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="content-all hide">
+    <div id="content-all" class="content-all hide">
         <div class="container1-red">
             <div class="bola"><img class="logo" src="png/logo-quiz.png" alt=""></div>
             <p class="texto1">BEM VINDO AO QUIZ
@@ -57,7 +57,7 @@
                 incrível! Mostre que você é fera nas corridas e responda tudo!
                 <div class="botao-red">
                     <div class="controls-container">
-                        <button onclick="ocultar()" class="start-quiz button">Começar Quiz!</button>
+                        <button onclick="changeContentPageToQuiz()" class="start-quiz button">Começar Quiz!</button>
                     </div>
                 </div>
 
@@ -80,5 +80,5 @@
         </div>
     </div>
 </body>
-
 </html>
+<script src="./quiz.js"></script>

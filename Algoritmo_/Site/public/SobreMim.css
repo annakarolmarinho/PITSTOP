@@ -1,12 +1,8 @@
 .body {
-    height: 98.4vh;
+    height: 98.3vh;
     background-color: black;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(png/ferrari.png);
-    background-repeat: no-repeat;
-    background-size: cover;
     overflow-x: hidden;
-    overflow-y: hidden;
-
+    overflow: hidden;
 
 }
 
@@ -33,7 +29,7 @@
 }
 
 .container-header {
-    width: 1770px;
+    width: auto;
     height: auto;
     display: flex;
     padding-left: 30px;
@@ -88,69 +84,31 @@
 .cadastro-logo {
     position: relative;
     top: 44px;
-    left: 900px;
-}
-
-.body .text-box {
-    position: absolute;
-    display: flex;
-    color: white;
-    align-content: center;
-    font-size: 40px;
-    padding-left: 200px;
-    font-family: 'Oswald', sans-serif;
-    top: 200px;
+    left: 848px;
 
 }
-
-.carro {
-    display: flex;
-    float: right;
-    position: relative;
-    right: 350px;
-    top: 300px;
-}
-
-.botao1,
-.botao2 {
-    font-family: 'Oswald', sans-serif;
-    position: relative;
-    top: 700px;
-    left: 540px;
-    border: 2px solid #CB0006;
-    display: inline-block;
-    margin-right: 300px;
-    background-color: #ffffff;
-    padding: 20px 30px;
-    border-radius: 80px;
-    text-align: center;
-    text-decoration: none;
-    color: #000000; 
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.botao1:hover,
-.botao2:hover {
-    background-color: #CB0006;
-    color: #ffffff; 
-    border-color: #ffffff;
-    transform: translateY(-5px);
-    box-shadow:  0 0 18px rgba(255, 255, 255, 0.3);;
-}
-
-.botao1 a,
-.botao2 a {
-    text-decoration: none;
-    color: inherit; 
-}
-
-a {
-    text-decoration: none;
-    color: #ffffff; 
-    font-family: 'Oswald', sans-serif;
-}
-
 
 #aqui a {
     color: #CB0006;
+}
+
+/* ----------------------------------------- */
+
+.aboutMe {
+    display: flex;
+    margin-top: 90px;
+    margin-left: 330px;
+
+}
+
+.texto {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    width: 610px;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    bottom: 640px;
+    left: 880px;
+    text-align: justify;
 }

@@ -90,120 +90,143 @@
  
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
+.pesquisa{
+    position: relative;
+    background-color: white;
+    color: black;
+    top: 84px;
+    width: 1820px;
+    height: 790px;
+    left: 50px;
+}
+
 .cabeçalho{
+    color: black;
     width: 1600px;
     height: 1000px;
     position: relative;
-    top: 170px;
-    left: 160px;
+    top: 120px;
+    left: 60px;
 }
 .cabeçalho .texto1{
     position: relative;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    font-size: 25px;
-    color: white;
+    font-size: 32px;
+    left: 55px;
+    color: rgb(0, 0, 0);
     padding-bottom: 60px;
-    text-align: center;
+    text-align: start;
 }
 
 .cabeçalho .texto2{
     position: relative;
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    font-size: 27px;
-    color: white;
+    width: 800px;
+    top: 50px;
+    left: 30px;
+    font-size: 23px;
+    color: rgb(0, 0, 0);
     padding-bottom: 20px;
-    text-align: justify;
-}
-.formulario{
-    position: relative;
-    color: white;
-    font-weight: bold;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 28px;
 }
-.fieldset{
-    width: 500px;
+
+.tudo {
+    font-family: 'Oswald', sans-serif ;
+    width: 700px;
     position: relative;
-    justify-content: center;
-    padding: 10%;
+    bottom: 340px;
+    left: 900px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.formulario {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 20px;
     align-items: center;
-    
 }
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-usuario,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #9c0404;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.input-label p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 p{
-    color: white;
     font-weight: bold;
-    font-family: 'Oswald', sans-serif;
-
 }
-.input-box{
-    font-size: 25px;
-    display: flex;
-    position: relative;
-    font-family:'Oswald', sans-serif;
-    color: white;
+.check {
     font-weight: bold;
-    outline: none;
-    display: block;
+    margin-right: 10px;
 }
 
-.input-usuario{
-    font-size: 25px;
+.submit {
     position: relative;
-    background: white;
-    border: none;
-    border-bottom: 1px solid white;
-    outline: none;
-    display: block;
+    bottom: 400px;
+    left: 330px;
+    background-color: #CB0006;
+    color: #f9f9f9;
+    padding: 20px 130px;
+    border-width: 2px solid white;
+    border-radius: 70px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
-.input-label{
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold;
-    color: white;
-    font-size: 25px;
-    display: block;
-}
-.input-label .check{
-    font-size: 25px;
-    position: relative;
-    border-radius: 5px;
-    width: 25px;
-    height: 20px;
-}
-.container1{
-    position: relative;
-    left: 60px;
-    top: 10px;
-}
-.container2{
-    position: relative;
-    float: right;
-    flex-direction: column;
-    right: 30px;
-    top: -290px;
-    left: 6px;
-    align-items: flex-start;
-}
-.submit{
-    position: relative;
-    justify-content: center;
-    border-radius: 60px;
-    border-color: white;
+
+.submit:hover{
     background-color: white;
+    border-color: #CB0006;
     color: black;
-    left: 550px;
-    top: 70px;
-    width: 20vw;
-    height: 5vh;
 }
-#nome{
+
+input[type="radio"] {
+    display: none; 
+}
+
+.check {
     position: relative;
-    padding: auto;
-    font-size: 30px;
-    border: none;
+    padding-left: 25px;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 20px;
 }
-.check{
-    border-radius: 5px;
+
+.check:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #CB0006;
+    border-radius: 50%;
 }
+
+input[type="radio"]:checked + .check:before {
+    background-color: #CB0006;
+}
+
