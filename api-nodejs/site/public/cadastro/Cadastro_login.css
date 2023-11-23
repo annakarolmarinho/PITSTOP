@@ -1,0 +1,500 @@
+body {
+    height: 98.3vh;
+    background-color: black;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+body .container-vermelho {
+    background: #CB0006;
+    position: absolute;
+    height: auto;
+    width: 30px;
+    inset: 0 auto 0 0;
+}
+
+.ul {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    position: top;
+    height: 100px;
+    word-spacing: 3px;
+    left: 50px;
+    align-items: center;
+
+
+}
+
+.container-header {
+    width: auto;
+    height: auto;
+    display: flex;
+    padding-left: 30px;
+    align-self: center;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-header .ul {
+    position: absolute;
+    width: 1700px;
+    display: flex;
+    top: 15px;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.container-header a {
+    position: relative;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+
+
+#titulo {
+
+    font-size: 40px;
+    align-self: center;
+    position: relative;
+    top: 1px;
+    padding-left: 30px;
+    justify-content: center;
+    align-self: center;
+
+}
+
+#image {
+    display: flex;
+    align-self: center;
+    position: relative;
+    top: auto;
+    padding-left: 15px;
+}
+
+.cadastro-logo {
+    position: relative;
+    top: 50px;
+    left: 848px;
+
+}
+
+#aqui a {
+    color: #CB0006;
+}
+
+/* ------------------------------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    font-family: 'Oswald', sans-serif;
+}
+
+.content {
+    background-color: white;
+    border-radius: 15px;
+    width: 75%;
+    height: 60%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.content:before {
+    content: "";
+    position: absolute;
+    background-color: #CB0006;
+    width: 40%;
+    height: 100%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    left: 0;
+}
+
+.conteudo1 {
+    display: flex;
+    text-align: center;
+
+}
+
+.conteudo1 .segunda-coluna {
+    z-index: 12;
+}
+
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+
+}
+
+.formulario input {
+    height: 45px;
+    width: 100%;
+    border: none;
+    background-color: #ecf0f1;
+    margin: 8px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #ecf0f1 inset !important;
+    -webkit-text-fill-color: #000 !important;
+}
+
+.lista-sociais {
+    display: flex;
+    list-style-type: none;
+}
+
+.primeira-coluna {
+    text-align: center;
+    width: 40%;
+    z-index: 10;
+}
+
+
+.segunda-coluna {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+.titulo {
+    font-size: 35px;
+    font-weight: bold;
+    text-transform: capitalize;
+    line-height: 50px;
+}
+
+.titulo1 {
+    color: white;
+}
+
+.titulo2 {
+    color: #CB0006;
+}
+
+.descricao {
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+    line-height: 30px;
+}
+
+.descricao-primeiro {
+    color: #fff;
+}
+
+.descricao-segundo {
+    color: #CB0006;
+}
+
+.botao {
+    border-radius: 15px;
+    text-transform: uppercase;
+    color: rgb(248, 240, 240);
+    font-size: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+    font-weight: bold;
+    top: 40px;
+    width: 150px;
+    align-self: center;
+    border: none;
+    margin-top: 1rem;
+}
+
+.botao-a {
+    background-color: transparent;
+    border: 1px solid white;
+    transition: background-color 0.5s;
+}
+
+.botao-a:hover {
+    background-color: white;
+    color: #CB0006;
+
+}
+
+.botao-b {
+    background-color: #CB0006;
+    border: 1px solid #CB0006;
+    transition: background-color 0.5s;
+}
+
+.botao-b:hover {
+    background-color: white;
+    border: 1px solid #CB0006;
+    color: #CB0006;
+}
+
+.item-midia {
+    margin: 1rem 0;
+}
+
+.item-midia a {
+    color: #CB0006;
+}
+
+.link-rede-social:not(:first-child) {
+    margin-left: 10px;
+}
+
+.link-rede-social:hover .item-midia {
+    background-color: #CB0006;
+    color: rgb(255, 255, 255);
+    border-color: #CB0006;
+}
+
+.link-rede-social .item-midia {
+    transition: background-color 0.5s;
+}
+
+.lista-sociais .item-midia {
+    border: 1px solid rgb(182, 5, 5);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #CB0006;
+    margin-left: 10px;
+}
+
+.label-input {
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    margin: 9px;
+    text-indent: 12px;
+}
+
+.texto {
+    position: relative;
+    align-self: center;
+    left: -5px;
+}
+
+/*------SEGUNDO CONTEUDO ---------*/
+
+.conteudo2 {
+    position: absolute;
+    display: flex;
+}
+
+.conteudo2 .primeira-coluna {
+    order: 2;
+    z-index: -1;
+}
+
+.conteudo2 .segunda-coluna {
+    order: 1;
+    z-index: -1;
+}
+
+.password {
+    color: #34495e;
+    font-size: 14px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.password::first-letter {
+    text-transform: capitalize;
+}
+
+
+
+.entrar-js .conteudo1 .primeira-coluna {
+    z-index: -1;
+}
+
+.entrar-js .conteudo2 .segunda-coluna {
+    z-index: 11;
+}
+
+.entrar-js .conteudo2 .primeira-coluna {
+    z-index: 13;
+}
+
+.entrar-js .content::before {
+    left: 60%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    animation: slidein 1.3s;
+
+    z-index: 12;
+}
+
+.cadastrar-js .content::before {
+    animation: slideout 1.3s;
+
+    z-index: 12;
+}
+
+.cadastrar-js .conteudo2 .primeira-coluna,
+.cadastrar-js .conteudo2 .segunda-coluna {
+    z-index: -1;
+}
+
+.cadastrar-js .conteudo1 .segunda-coluna {
+    z-index: 11;
+}
+
+.cadastrar-js .conteudo1 .primeira-coluna {
+    z-index: 13;
+}
+
+
+
+.entrar-js .conteudo1 .segunda-coluna {
+
+    z-index: -1;
+    position: relative;
+    animation: deslocamentoEsq 1.3s;
+}
+
+.cadastrar-js .conteudo2 .segunda-coluna {
+    position: relative;
+    z-index: -1;
+    animation: deslocamentoDir 1.3s;
+}
+
+/*---------- animação css ------*/
+
+@keyframes deslocamentoEsq {
+
+    from {
+        left: 0;
+        opacity: 1;
+        z-index: 12;
+    }
+
+    25% {
+        left: -80px;
+        opacity: .5;
+
+    }
+
+    50% {
+        left: -100px;
+        opacity: .2;
+
+    }
+
+    to {
+        left: -110px;
+        opacity: 0;
+        z-index: -1;
+    }
+}
+
+
+@keyframes deslocamentoDir {
+
+    from {
+        left: 0;
+        z-index: 12;
+    }
+
+    25% {
+        left: 80px;
+
+    }
+
+    50% {
+        left: 100px;
+
+    }
+
+    to {
+        left: 110px;
+        z-index: -1;
+    }
+}
+
+
+/*ANIMAÇÃO CSS*/
+
+@keyframes slidein {
+
+    from {
+        left: 0;
+        width: 40%;
+    }
+
+    25% {
+        left: 5%;
+        width: 50%;
+    }
+
+    50% {
+        left: 25%;
+        width: 60%;
+    }
+
+    75% {
+        left: 45%;
+        width: 50%;
+    }
+
+    to {
+        left: 60%;
+        width: 40%;
+    }
+}
+
+@keyframes slideout {
+
+    from {
+        left: 60%;
+        width: 40%;
+    }
+
+    25% {
+        left: 45%;
+        width: 50%;
+    }
+
+    50% {
+        left: 25%;
+        width: 60%;
+    }
+
+    75% {
+        left: 5%;
+        width: 50%;
+    }
+
+    to {
+        left: 0;
+        width: 40%;
+    }
+}

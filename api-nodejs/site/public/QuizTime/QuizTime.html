@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="png/favicon.ico">
+    <title>PITSTOP |QuizTime </title>
+    <link rel="stylesheet" href="QuizTime.css">
+    <script src="quiz.js" async></script>
+</head>
+
+<body class="body" id="body">
+
+    <div class="header">
+        <div class="container-vermelho"> </div>
+        <div class="container-header">
+            <ul class="ul">
+                <li class="item"><a href="HOME.html"> HOME </a></li>
+                <li class="item"><a href="Equipes.html"> EQUIPES </a></li>
+                <li class="item"><a href="Igualdade.html"> IGUALDADE </a></li>
+                <li class="item"><a href="EnergiaLimpa.html"> ENERGIA LIMPA </a></li>
+                <li id="aqui" class="item"><a href="QuizTime.html"> QUIZTIME </a></li>
+                <li class="item"><a href="circuitosMonaco.html"> CIRCUITOS </a></li>
+                <li class="item"><a href="sobreMim.html"> SOBRE MIM </a></li>
+                <li class="item"><a href=""> ANALYTICS </a></li>
+                <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
+
+            </ul>
+            <div class="cadastro-logo">
+                <a href="Cadastro_login.html"><img id="image2" src="png/cadastro.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <div id="content-all" class="content-all hide">
+        <div class="container1-red">
+            <div class="bola"><img class="logo" src="png/logo-quiz.png" alt=""></div>
+            <p class="texto1">BEM VINDO AO QUIZ
+            <p class="time">TIME</p>
+            </p>
+        </div>
+        <div class="container2-white">
+            <div class="imagem1">
+                <img src="png/quizlogin.png" alt="">
+
+            </div>
+            <div class="white-texto">
+                Olá, Para jogar nosso <br>quiz semanal faça o <br><a href="Cadastro_login.html" class="login">login</a>
+                ou <a href="Cadastro_login.html" class="cadastre-se">cadastre-se</a>
+            </div>
+            <div class="imagem2">
+                <img src="png/imagemfã_quiz.png" alt="">
+            </div>
+        </div>
+        <div class="container3-white">
+            <div class="texto-3">
+                Vai encarar? Temos 10 perguntinhas sobre Fórmula 1 que vão desafiar seu conhecimento sobre esse esporte
+                incrível! Mostre que você é fera nas corridas e responda tudo!
+                <div class="botao-red">
+                    <div class="controls-container">
+                        <button onclick="changeContentPageToQuiz()" class="start-quiz button">Começar Quiz!</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container">
+        <div class="questions-container hide">
+            <div class="answers-container">
+                <span class="question" id="question"></span>
+                <div class="answers" id="answer-buttons">
+                    <button class="answer-button">Resposta 1</button>
+                    <button class="answer-button">Resposta 2</button>
+                    <button class="answer-button">Resposta 3</button>
+                    <button class="answer-button">Resposta 4</button>
+                </div>
+            </div>
+        </div>
+        <div class="controls-container">
+            <button class="next-question hide" id="next-question">Próxima pergunta</button>
+        </div>
+    </div>
+</body>
+</html>
+<script src="./quiz.js"></script>
