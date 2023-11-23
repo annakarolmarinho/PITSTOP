@@ -23,6 +23,7 @@
                 <li id="aqui" class="item"><a href="QuizTime.html"> QUIZTIME </a></li>
                 <li class="item"><a href="circuitosMonaco.html"> CIRCUITOS </a></li>
                 <li class="item"><a href="sobreMim.html"> SOBRE MIM </a></li>
+                <li class="item"><a href=""> ANALYTICS </a></li>
                 <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
 
             </ul>
@@ -67,16 +68,18 @@
     </div>
     <div class="container">
         <div class="questions-container hide">
-            <span class="question">Pergunta aqui?</span>
             <div class="answers-container">
-                <button class="answer button">Resposta 1</button>
-                <button class="answer button">Resposta 2</button>
-                <button class="answer button">Resposta 3</button>
-                <button class="answer button">Resposta 4</button>
+                <span class="question" id="question"></span>
+                <div class="answers" id="answer-buttons">
+                    <button class="answer-button">Resposta 1</button>
+                    <button class="answer-button">Resposta 2</button>
+                    <button class="answer-button">Resposta 3</button>
+                    <button class="answer-button">Resposta 4</button>
+                </div>
             </div>
         </div>
         <div class="controls-container">
-            <button class="next-question button hide">Próxima pergunta</button>
+            <button class="next-question hide" id="next-question">Próxima pergunta</button>
         </div>
     </div>
 </body>

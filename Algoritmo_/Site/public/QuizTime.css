@@ -105,7 +105,7 @@
     background-color: #CB0006;
     border-radius: 100px;
     text-align: center;
-    font-family:'Oswald', sans-serif ;
+    font-family: 'Oswald', sans-serif;
 
 }
 
@@ -140,38 +140,41 @@
     font-size: 30px;
     text-align: center;
     align-items: center;
-    font-family:'Oswald', sans-serif ;
+    font-family: 'Oswald', sans-serif;
 }
 
-.white-texto{
-     position: relative;
-     top: 10px;
-     
+.white-texto {
+    position: relative;
+    top: 10px;
+
 
 }
+
 .login {
     font-size: 30px;
     font-weight: bold;
     color: #CB0006;
-    
+
 }
 
 .cadastre-se {
     font-size: 30px;
     font-weight: bold;
     color: #CB0006;
-   
+
 }
 
-.imagem1{
+.imagem1 {
     position: relative;
     top: 10px;
 }
-.imagem2{
+
+.imagem2 {
     position: relative;
     top: 15px;
 }
-.bola{
+
+.bola {
     position: relative;
     top: 15px;
     left: 19px;
@@ -181,13 +184,13 @@
     border-radius: 50%;
 }
 
-.logo{
+.logo {
     position: relative;
     top: 15px;
     left: -20px;
 }
 
-.container3-white{
+.container3-white {
     position: relative;
     left: 140px;
     width: 1150px;
@@ -196,10 +199,11 @@
     background-color: white;
     border-radius: 100px;
     font-weight: bold;
-    font-family:'Oswald', sans-serif ;
+    font-family: 'Oswald', sans-serif;
 
 }
-.texto-3{
+
+.texto-3 {
     position: relative;
     text-align: justify;
     width: 800px;
@@ -209,9 +213,10 @@
 }
 
 
-/* ---------QUIZ------- */
+/* ---------QUIZ--------------------------------------------------------------------------------------------------------------------------- */
+
 .button {
-    position:relative;
+    position: relative;
     top: -122px;
     left: 879px;
     width: 170px;
@@ -219,15 +224,74 @@
     background-color: #CB0006;
     color: white;
     border-radius: 50%;
-    font-family:'Oswald', sans-serif; 
+    font-family: 'Oswald', sans-serif;
     font-size: 20px;
     transition: filter 0.1s;
     border: none;
     padding: 0 32px;
 }
+
+.answers-container {
+    position: relative;
+    top: 200px;
+    width: 51%;
+    height: 600px;
+    left: 480px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    border-radius: 30px;
+    align-items: center;
+    border-color: 2px solid #CB0006;
+}
+
+.answers-container span {
+    color: black;
+    position: relative;
+    top: 40px;
+    left: 3%;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto;
+    gap: 7px;
+}
+
+
+.answer-button {
+    position: relative;
+    top: 120px;
+    left: 30px;
+    background-color: #000000;
+    border-radius: 20px;
+    width: 400px;
+    height: 100px;
+    color: white;
+    font-size: 20px;
+    border: 1px solid #ffffff;
+    transition: background-color 0.3s ease;
+    margin: 5px 2px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
+
+.answer-button:hover {
+    background-color: #CB0006;
+        filter: brightness(0.8); 
+}
+
 .button:not(:disabled):hover {
     filter: brightness(0.8);
 }
+
 .container1-red {
     position: relative;
     display: flex;
@@ -238,8 +302,8 @@
     background-color: #CB0006;
     border-radius: 100px;
     text-align: center;
-    font-family:'Oswald', sans-serif ;
-   
+    font-family: 'Oswald', sans-serif;
+
 
 }
 
@@ -261,3 +325,49 @@
     left: 77px;
 }
 
+/* .question{
+    position: absolute;
+    top: 300px;
+    left: 600px;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    background-color: ;
+    font-size: 35px;
+} */
+.next-question button hide {
+    position: relative;
+    background-color: #000000;
+    border-radius: 20px;
+    width: 50px;
+    height: 20px;
+    color: #ffffff;
+    top: 30px;
+}
+
+.next-question {
+
+    position: relative;
+    top: 100px;
+    left: 860px;
+    font-family: 'Oswald', sans-serif;
+    background-color: #CB0006;
+    border-radius: 70px;
+    color: white;
+    width: 200px;
+    height: 70px;
+    border: 1px solid #CB0006;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.next-question:hover {
+    background-color: white;
+    border-color: #CB0006;
+    color: black;
+}
+
+#question {
+    position: relative;
+    top: 55px;
+    left: 90px;
+    font-family: 'Oswald', sans-serif;
+}
