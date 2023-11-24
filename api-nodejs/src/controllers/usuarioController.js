@@ -22,7 +22,7 @@ function autenticar(req, res) {
 
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
-                        res.json()
+                        res.json(resultadoAutenticar);
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -41,9 +41,9 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    var nome = req.body.nome;
-    var email = req.body.email;
-    var senha = req.body.senha;
+    var nome = req.body.nomeServer;
+    var email = req.body.emailServer;
+    var senha = req.body.senhaServer;
 
 
     if (nome == undefined) {

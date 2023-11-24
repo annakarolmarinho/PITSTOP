@@ -18,7 +18,7 @@
         <div class="container-vermelho"> </div>
         <div class="container-header">
             <ul class="ul">
-                <li class="item"><a href="../Home/HOME.html"> HOME </a></li>
+                <li class="item"><a href="../index.html"> HOME </a></li>
                 <li class="item"><a href="../Equipes/Equipes.html"> EQUIPES </a></li>
                 <li class="item"><a href="../Igualdade/Igualdade.html"> IGUALDADE </a></li>
                 <li class="item"><a href="../energia limpa/EnergiaLimpa.html"> ENERGIA LIMPA </a></li>
@@ -73,7 +73,7 @@
                         <input id="input_password" required type="password" placeholder="senha">
                     </label>
 
-                    <button onclick="handleCadastroFormSubmission()" type="button" class="botao botao-b">
+                    <button onclick="cadastrar()" type="button" class="botao botao-b">
                         <p class="texto">cadastrar</p>
                     </button>
                 </form>
@@ -108,21 +108,24 @@
                 <form class="formulario">
                     <label class="label-input" for="">
                         <i class="fa-solid fa-user icon-modify"></i>
-                        <input input="input_nomeLogin" type="text" placeholder="Nome Completo">
+                        <input id="input_nomeLogin" type="text" placeholder="Nome Completo">
                     </label>
                     <label class="label-input" for="">
                         <i class="fa-solid fa-envelope icon-modify"></i>
-                        <input input="input_emailLogin" type="email" placeholder="E-mail">
+                        <input id="input_emailLogin" type="email" placeholder="E-mail">
                     </label>
                     <label class="label-input" for="">
                         <i class="fa-solid fa-lock icon-modify"></i>
-                        <input input="input_passwordLogin" type="password" placeholder="senha">
+                        <input id="input_passwordLogin" type="password" placeholder="senha">
                     </label>
                     <a class="senha" href="#">esqueceu sua senha?</a>
-                    <button onclick="handleLoginFormSubmision()" type="button" class="botao botao-b">Entrar</button>
+                    <button onclick="entrar()" type="button" class="botao botao-b">Entrar</button>
                 </form>
             </div>
         </div>
+    </div>
+    <div id="errorToast" class="toast">
+        Ocorreu um erro!
     </div>
     <script>
         var btnEntrar = document.querySelector("#btnEntrar");
@@ -143,16 +146,11 @@
 
             //Recupere o valor da nova input pelo nome do id
             // Agora vá para o método fetch logo abaixo
-            var nomeLogin = input_nomeLogin.value;
-            var emailLoginVar = input_emailLogin.value;
-            var senhaLoginVar = input_passwordLogin.value;
+            var nomeVar = input_nomeCompleto.value;
+            var emailVar = input_email.value;
+            var senhaVar = input_password.value;
 
-            if (
-                nomeVar == "" ||
-                emailVar == "" ||
-                senhaVar == "" ||
-                confirmacaoSenhaVar == ""
-            ) {
+            if (nomeVar == "" || emailVar == "" || senhaVar == "") {
                 cardErro.style.display = "block";
                 alert('Mensagem de erro para todos os campos em branco');
 
@@ -169,9 +167,9 @@
                 body: JSON.stringify({
                     // crie um atributo que recebe o valor recuperado aqui
                     // Agora vá para o arquivo routes/usuario.js
-                    nomeServer: nomeLoginVar,
-                    emailServer: emailLoginVar,
-                    senhaServer: senhaLoginVar,
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
                 }),
             })
                 .then(function (resposta) {
@@ -184,45 +182,41 @@
                         //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
                         // window.location = "index.html";
                         setTimeout(function () {
-                            window.location = "login.html";
+                            body.className = "entrar-js";
                         }, 1000); // apenas para exibir o loading
                         limparFormulario();
                         // finalizarAguardar();
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
+
                     }
 
                 })
                 .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                    // finalizarAguardar();
+                    showErrorToast(resposta);
                 });
 
             return false;
         }
 
 
-        function sumirMensagem() {
-            cardErro.style.display = "none";
-        }
-
-
 
         function entrar() {
-            aguardar();
+            // aguardar();
 
             var nomeLogin = input_nomeLogin.value;
             var emailLogin = input_emailLogin.value;
             var senhaLogin = input_passwordLogin.value;
 
-            if (emailLoginVar == "" || senhaLoginVar == "") {
-                cardErro.style.display = "block"
-                mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-                finalizarAguardar();
-                return false;
-            }
-            else {
-                setInterval(sumirMensagem, 5000)
+            var listaErros = validarFormulario(nomeLogin, emailLogin, senhaLogin);
+
+            if (listaErros.length > 0) {
+                let mensagem = "";
+                for (var erro of listaErros) {
+                    mensagem += erro + '\n';
+                }
+                showErrorToast(mensagem);
+                return;
             }
 
             console.log("FORM LOGIN: ", emailLogin);
@@ -245,6 +239,7 @@
                     console.log(resposta);
 
                     resposta.json().then(json => {
+                        console.log("Chegou aqui");
                         console.log(json);
                         console.log(JSON.stringify(json));
                         sessionStorage.EMAIL_USUARIO = json.email;
@@ -262,6 +257,10 @@
 
                     console.log("Houve um erro ao tentar realizar o login!");
 
+                    if (resposta.status == 403) {
+                        showErrorToast('Usuário ou senha inválidos');
+                    }
+
                     resposta.text().then(texto => {
                         console.error(texto);
                         finalizarAguardar(texto);
@@ -270,82 +269,50 @@
 
             }).catch(function (erro) {
                 console.log(erro);
-            })
-
-            return false;
+            });
         }
 
-        function sumirMensagem() {
-            cardErro.style.display = "none"
+
+        function showErrorToast(message) {
+            var toast = document.getElementById("errorToast");
+            toast.classList.add("show-toast");
+
+            toast.innerHTML = message;
+
+            setTimeout(function () {
+                toast.classList.remove("show-toast");
+            }, 3000);
         }
 
-        // async function handleCadastroFormSubmission() {
-        //     var nomeCompleto = document.getElementById("input_nomeCompleto").value;
-        //     var email = document.getElementById("input_email").value;
-        //     var senha = document.getElementById("input_password").value;
+        function validarFormulario(nome, email, senha) {
 
-        //     var cadastradoComSucesso = await cadastrarNovoUsuario(nomeCompleto, email, senha);
+            var listaErros = [];
 
-        //     // if ternário -> Ler: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/Conditional_operator
-        //     // body.className = cadastro ? "entrar-js" : "cadastrar-js";
+            if (!validarEmail(email)) {
+                listaErros.push('Por favor, insira um email válido.');
+            }
 
-        //     if (cadastradoComSucesso) {
-        //         body.className = "entrar-js";
-        //     } else {
-        //         body.className = "cadastrar-js";
-        //     }
-        // }
+            if (nome.trim() === '') {
+                listaErros.push('Por favor, insira um nome.');
+            }
 
-        // async function cadastrarNovoUsuario(nomeCompleto, email, senha) {
-        //     var requestBody = {
-        //         nome: nomeCompleto,
-        //         email: email,
-        //         senha: senha
-        //     };
+            if (senha.length < 6) {
+                listaErros.push('A senha deve ter pelo menos 6 caracteres.');
+            }
 
-        //     var respostaCadastroUsuario = await enviarRequisicaoCadastro('/usuarios/cadastrar', requestBody);
+            return listaErros;
+        }
 
-        //     return respostaCadastroUsuario.ok;
-        // }
+        function validarEmail(email) {
+            var indiceArroba = email.indexOf('@');
+            var indicePonto = email.lastIndexOf('.');
 
-        // async function enviarRequisicaoCadastro(url, requestBody) {
+            if (indiceArroba < 0 || indicePonto < 0 || indiceArroba > indicePonto || indiceArroba === 0 || indicePonto === email.length - 1) {
+                return false;
+            }
 
-        //     // fetch inicia o processo de busca de um recurso da rede e retorna uma promessa -> https://developer.mozilla.org/pt-BR/docs/Web/API/fetch
-        //     // o await serve para esperar que uma promessa seja resolvida antes de continuar a execução do código, só é possível usar await em funções assincronas -> https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/async_function
-
-        //     var respostaCadastroUsuario = await fetch(url, {
-        //         body: JSON.stringify(requestBody),
-        //         method: 'POST',
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         }
-        //     });
-
-        //     return respostaCadastroUsuario;
-        // }
-
-        // async function handleLoginFormSubmision(){
-        //     var nomeCompleto = document.getElementById("input_nomeLogin").value;
-        //     var email = document.getElementById("input_emailLogin").value;
-        //     var senha = document.getElementById("input_passwordLogin").value;
-
-        //     var logadoComSucesso = await fazerLogin(nomeCompleto, email, senha);
-
-        //     if(logadoComSucesso){
-        //         window.location = "dashboard.html"
-        //     }else{
-        //         body.className = "entrar-js";
-        //     }
-        //   }
-
-        //   async function fazerLogin(nomeCompleto, emai, senha){
-
-        //     var respostaLogarUsuario = await enviarLoginUsuario('/usuarios/entrar', requestBody)
-
-        //     return respostaLogarUsuario.ok;
-
-        // async function enviarRequisicaoCadastro(url, requestBody) {
-
+            return true;
+        }
     </script>
 </body>
 
