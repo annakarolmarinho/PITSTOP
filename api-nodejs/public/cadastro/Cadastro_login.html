@@ -30,7 +30,7 @@
 
             </ul>
             <div class="cadastro-logo">
-                <a href="Cadastro_login.html"><img id="image2" src="png/cadastro.png" alt=""></a>
+                <a href="Cadastro_login.html"><img id="image2" src="../png/cadastro.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -106,10 +106,10 @@
                 </div>
                 <p class="descricao descricao-segundo"> ou use seu email para o registro:</p>
                 <form class="formulario">
-                    <label class="label-input" for="">
+                    <!-- <label class="label-input" for="">
                         <i class="fa-solid fa-user icon-modify"></i>
                         <input id="input_nomeLogin" type="text" placeholder="Nome Completo">
-                    </label>
+                    </label> -->
                     <label class="label-input" for="">
                         <i class="fa-solid fa-envelope icon-modify"></i>
                         <input id="input_emailLogin" type="email" placeholder="E-mail">
@@ -118,7 +118,7 @@
                         <i class="fa-solid fa-lock icon-modify"></i>
                         <input id="input_passwordLogin" type="password" placeholder="senha">
                     </label>
-                    <a class="senha" href="#">esqueceu sua senha?</a>
+                  
                     <button onclick="entrar()" type="button" class="botao botao-b">Entrar</button>
                 </form>
             </div>
@@ -157,7 +157,7 @@
                 // finalizarAguardar();
                 return false;
             } else {
-                setInterval(sumirMensagem, 5000);
+                // setInterval(sumirMensagem, 5000);
             }
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -184,7 +184,7 @@
                         setTimeout(function () {
                             body.className = "entrar-js";
                         }, 1000); // apenas para exibir o loading
-                        limparFormulario();
+                        // limparFormulario();
                         // finalizarAguardar();
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -200,15 +200,62 @@
         }
 
 
+        function showErrorToast(message) {
+            var toast = document.getElementById("errorToast");
+            toast.classList.add("show-toast");
+
+            toast.innerHTML = message;
+
+            setTimeout(function () {
+                toast.classList.remove("show-toast");
+            }, 3000);
+        }
+
+        function validarFormulario(nome, email, senha) {
+
+            var listaErros = [];
+
+            if (!validarEmail(email)) {
+                listaErros.push('Por favor, insira um email válido.');
+            }
+
+            if (nome.trim() === '') {
+                listaErros.push('Por favor, insira um nome.');
+            }
+
+            if (senha.length < 6) {
+                listaErros.push('A senha deve ter pelo menos 6 caracteres.');
+            }
+
+            return listaErros;
+        }
+
+        function validarEmail(email) {
+            var indiceArroba = email.indexOf('@');
+            var indicePonto = email.lastIndexOf('.');
+
+            if (indiceArroba < 0 || indicePonto < 0 || indiceArroba > indicePonto || indiceArroba === 0 || indicePonto === email.length - 1) {
+                return false;
+            }
+
+            return true;
+        }
+
+
+
+
+
+
 
         function entrar() {
             // aguardar();
 
-            var nomeLogin = input_nomeLogin.value;
+            // var nomeLogin = input_nomeLogin.value;
             var emailLogin = input_emailLogin.value;
             var senhaLogin = input_passwordLogin.value;
 
-            var listaErros = validarFormulario(nomeLogin, emailLogin, senhaLogin);
+            var listaErros = validarFormulario( emailLogin, senhaLogin);
+            // nomeLogin,
 
             if (listaErros.length > 0) {
                 let mensagem = "";
@@ -230,7 +277,7 @@
                 body: JSON.stringify({
                     emailServer: emailLogin,
                     senhaServer: senhaLogin,
-                    nomeServer: nomeLogin
+                    // nomeServer: nomeLogin
                 })
             }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
@@ -242,9 +289,9 @@
                         console.log("Chegou aqui");
                         console.log(json);
                         console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.nomeCompleto;
-                        sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.EMAIL_USUARIO = json[0].email;
+                        sessionStorage.NOME_USUARIO = json[0].nomeCompleto;
+                        sessionStorage.ID_USUARIO = json[0].idUsuario;
 
 
                         setTimeout(function () {
@@ -284,16 +331,12 @@
             }, 3000);
         }
 
-        function validarFormulario(nome, email, senha) {
+        function validarFormulario(email, senha) {
 
             var listaErros = [];
 
             if (!validarEmail(email)) {
                 listaErros.push('Por favor, insira um email válido.');
-            }
-
-            if (nome.trim() === '') {
-                listaErros.push('Por favor, insira um nome.');
             }
 
             if (senha.length < 6) {

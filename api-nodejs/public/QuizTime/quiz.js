@@ -1,17 +1,29 @@
-
-
 var pageQuestion = 0;
 
+// Os dados de sessionStorage: NOME_USUARIO, ID_USUARIO e EMAIL_USUARIO foram salvos durante o login nas linhas 292, 293 e 294 do Cadastro_login.html
+
+// Foi feito uma alteração no html que inclui um elemento do tipo <b> para incluir o usuário
+var b_usuario = document.getElementById("nome_usuario"); // essa linha obtem o elemento <b> do html pelo id
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO; // obtem o nome do usuário do sessionStorage e inclui no html
+
 function changeContentPageToQuiz() {
+    var idUsuario = sessionStorage.ID_USUARIO; // obtem o id Usuario do session storage
+    
+    if (idUsuario === null || idUsuario === undefined || idUsuario.trim() === "") { // verifica se o usuario não está "logado" para enviar ele a página de cadastro
+        window.location = '../cadastro/Cadastro_login.html';
+        return;
+    }
+
     var contentAll = document.getElementById('content-all');
     contentAll.remove();
+    var nextQuestionButton = document.getElementById('next-question');
+    nextQuestionButton.style.display = "none"
     showQuestion();
 }
 
 function showQuestion() {
     var questionElement = document.getElementById('question');
     var answerButtonsElement = document.getElementById('answer-buttons');
-
     questionElement.textContent = questions[pageQuestion].question;
 
     // Remove previous answer buttons
@@ -31,30 +43,19 @@ function showQuestion() {
     // Show the question and answer buttons
     questionElement.style.display = 'block';
     answerButtonsElement.style.display = 'grid';
-
-    // Show next question button if not the last question
     var nextQuestionButton = document.getElementById('next-question');
-    nextQuestionButton.style.display = (pageQuestion < questions.length - 1) ? 'block' : 'none';
-}
-
-function checkAnswer(button) {
-    var isCorrect = questions[pageQuestion].answers.find(answer => answer.option === button.textContent).correct;
-
-    // You can handle the correct/incorrect logic here (e.g., change button color)
-
-    // Move to the next question
-    pageQuestion++;
+    nextQuestionButton.style.display = "none"
 }
 
 function nextQuestion() {
-    showQuestion();
-}
-
-var nextQuestionButton = document.getElementById('next-question');
-nextQuestionButton.addEventListener('click', function () {
+    document.body.style.backgroundColor = "#000";
     pageQuestion++;
-    showQuestion();
-});
+    if(pageQuestion > 9) {
+        window.location = "QuizTime.html"
+    }else {
+        showQuestion();
+    }
+}
 
 function checkAnswer(button) {
     var isCorrect = questions[pageQuestion].answers.find(answer => answer.option === button.textContent).correct;
@@ -76,73 +77,15 @@ function checkAnswer(button) {
     });
 
     // Enable "Next Question" button and display score
+    var nextQuestionButton = document.getElementById('next-question');
     nextQuestionButton.style.display = 'block';
     nextQuestionButton.textContent = 'Próxima Pergunta (' + score + ' ponto' + (score !== 1 ? 's' : '') + ')';
-}
-function resetBackground() {
-    // Reset background color
-    document.body.style.backgroundColor = '';
+    if(pageQuestion > 8) {
+        nextQuestionButton.textContent = 'Finalizar Quiz'
+    }
 }
 
 var score = 0; // Variable to store the score
-
-var restartButton = document.createElement('button');
-restartButton.textContent = 'Refazer Quiz';
-restartButton.classList.add('restart-button');
-restartButton.addEventListener('click', function () {
-    // Reset variables and restart the quiz
-    pageQuestion = 0;
-    score = 0;
-    showQuestion();
-    resetBackground();
-});
-
-document.body.appendChild(restartButton);
-
-
-
-// var questionElement = document.getElementById("question");
-// var answerButtons = document.getElementById("answer-button");
-// var nextButton = document.getElementById("next-question");
-
-
-// let currentQuestionIndex = 0;
-// let score = 0;
-
-// function startQuiz() {
-//     let currentQuestionIndex = 0;
-//     let score = 0;
-//     nextButton.innerHTML = "Próxima Pergunta"
-//     showQuestion()
-// }
-
-// function showQuestion(){
-
-//     resetState();
-//     let currentQuestion = questions[currentQuestionIndex];
-//     let questionNo = currentQuestionIndex + 1;
-//     questionElement.innerHTML = questionNo + "." + currentQuestion.question;
-
-
-//     currentQuestion.answers.forEach(answer => {
-//         const button = document.createElement("button")
-//         button.innerHTML = answer.option;
-//         button.classList.add("answer-button");
-//         answerButtons.appenChild(button);
-//         if(answer.correct){
-//             button.dataset.correct = answer.correct
-//         }
-//         button.addEventListener("click", selectAnswer);
-//     });
-// }
-
-// function resetState(){
-//     nextButton.style.display = "none";
-//     while(answerButtons.firstChild){
-//         answerButtons.removeChild(answerButtons.firstChild);
-//     }
-// }
-
 var questions = [
     {
         question: "Quem detém o recorde de mais títulos mundiais na Fórmula 1?",

@@ -16,40 +16,40 @@
         <div class="container-vermelho"> </div>
         <div class="container-header">
             <ul class="ul">
-                <li class="item"><a href="HOME.html"> HOME </a></li>
+                <li class="item"><a href="../index.html"> HOME </a></li>
                 <li class="item"><a href="Equipes.html"> EQUIPES </a></li>
                 <li class="item"><a href="Igualdade.html"> IGUALDADE </a></li>
                 <li class="item"><a href="EnergiaLimpa.html"> ENERGIA LIMPA </a></li>
                 <li id="aqui" class="item"><a href="QuizTime.html"> QUIZTIME </a></li>
-                <li class="item"><a href="circuitosMonaco.html"> CIRCUITOS </a></li>
+                <li class="item"><a href="../circuitos/circuitosMonaco.html"> CIRCUITOS </a></li>
                 <li class="item"><a href="sobreMim.html"> SOBRE MIM </a></li>
-                <li class="item"><a href=""> ANALYTICS </a></li>
-                <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
+                <li id="titulo"><a href="../index.html">PITSTOP</a></li><img id="image" src="../png/LOGO2.png" alt="">
 
             </ul>
             <div class="cadastro-logo">
-                <a href="Cadastro_login.html"><img id="image2" src="png/cadastro.png" alt=""></a>
+                <a href="../cadastro/Cadastro_login.html"><img id="image2" src="../png/cadastro.png" alt=""></a>
             </div>
         </div>
     </div>
     <div id="content-all" class="content-all hide">
         <div class="container1-red">
-            <div class="bola"><img class="logo" src="png/logo-quiz.png" alt=""></div>
-            <p class="texto1">BEM VINDO AO QUIZ
-            <p class="time">TIME</p>
+            <div class="bola"><img class="logo" src="../png/logo-quiz.png" alt=""></div>
+            <p class="texto1">
+                BEM VINDO AO QUIZ
+                <p class="time">TIME</p>
             </p>
         </div>
         <div class="container2-white">
             <div class="imagem1">
-                <img src="png/quizlogin.png" alt="">
+                <img src="../png/quizlogin.png" alt="">
 
             </div>
             <div class="white-texto">
-                Olá, Para jogar nosso <br>quiz semanal faça o <br><a href="Cadastro_login.html" class="login">login</a>
-                ou <a href="Cadastro_login.html" class="cadastre-se">cadastre-se</a>
+                Olá, <b id="nome_usuario"></b> Para jogar nosso <br>quiz faça o <br><a href="Cadastro_login.html" class="login">login</a>
+                ou <a href="../Cadastro_login.html" class="cadastre-se">cadastre-se</a>
             </div>
             <div class="imagem2">
-                <img src="png/imagemfã_quiz.png" alt="">
+                <img src="../png/imagemfã_quiz.png" alt="">
             </div>
         </div>
         <div class="container3-white">
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="controls-container">
-            <button class="next-question hide" id="next-question">Próxima pergunta</button>
+            <button class="next-question hide" id="next-question" onclick="nextQuestion()">Próxima pergunta</button>
         </div>
     </div>
 </body>
