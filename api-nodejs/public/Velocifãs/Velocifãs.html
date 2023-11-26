@@ -22,11 +22,11 @@
                 <li class="item"><a href="../QuizTime/QuizTime.html"> QUIZTIME </a></li>
                 <li class="item"><a href="../circuitos/circuitosMonaco.html"> CIRCUITOS </a></li>
                 <li class="item"><a href="sobreMim.html"> SOBRE MIM </a></li>
-                <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
+                <li id="titulo"><a href="HOME.html">PITSTOP</a></li><img id="image" src="../png/LOGO2.png" alt="">
 
             </ul>
             <div class="cadastro-logo">
-                <a href="Cadastro_login.html"><img id="image2" src="png/cadastro.png" alt=""></a>
+                <a href="Cadastro_login.html"><img id="image2" src="../png/cadastro.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
                 o que torna este esporte tão especial para você.
             </div>
             <div class="tudo">
-                
+
                 <div class="formulario">
                     Formulário
                 </div>
@@ -49,7 +49,7 @@
 
                 <div class="input-box">
                     <label for="nome">Nome Completo:</label>
-                    <input type="text" name="nome" id="nome" class="input-usuario" required>
+                    <input type="text" name="nome" id="input_nome" class="input-usuario" required>
                 </div>
                 <br>
                 <div class="input-label">
@@ -66,13 +66,14 @@
                     <br><br>
                     <div class="input-box">
                         <label for="data_nascimento">Ano de Nascimento:</label> <br>
-                        <input type="date" name="data_nascimento" id="data_nascimento" class="input-usuario" required>
+                        <input type="date" name="data_nascimento" id="input_data_nascimento" class="input-usuario"
+                            required>
                     </div>
                 </div>
 
                 <div class="input-box">
                     <label for="nome">Piloto favorito:</label><br>
-                    <select name="nome" id="nome">
+                    <select name="nome" id="input_pilotoFavorito">
                         <option value="Lando">Lando Norris</option>
                         <option value="Oscar Piastri">Oscar Piastri</option>
                         <option value="Lewis Hamilton">Lewis Hamilton</option>
@@ -97,7 +98,7 @@
                 </div>
                 <div class="input-box">
                     <label for="nome">Equipe que torce:</label><br>
-                    <select name="nome" id="nome">
+                    <select name="nome" id="input_EquipeQueTorce">
                         <option value="McLaren">McLaren</option>
                         <option value="Mercedes">Mercedes</option>
                         <option value="Ferrari">Ferrari</option>
@@ -118,7 +119,7 @@
                 <label class="check" for="nao">não</label>
             </div>
         </div>
-        <input class="submit" type="submit" name="submit" id="submit"> -->
+        <button class="submit" type="submit" name="submit" id="submit" onclick="submit()"> Enviar </button>
     </div>
 
 
@@ -127,3 +128,184 @@
 </body>
 
 </html>
+<script>
+
+    function submit() {
+
+        var idUsuario = sessionStorage.ID_USUARIO;
+    
+        if (idUsuario === null || idUsuario === undefined || idUsuario.trim() === "") {
+            sessionStorage.LATEST_NAME = window.location.pathname;
+            window.location = '../cadastro/Cadastro_login.html';
+            return;
+        }
+
+        console.log(idUsuario);
+
+        var nomeCompleto = input_nome.value;
+        var genero;
+
+        if (document.getElementById('feminino').checked) {
+            genero = document.getElementById('feminino').value;
+        }
+        if (document.getElementById('Masculino').checked) {
+            genero = document.getElementById('Masculino').value;
+        }
+        if (document.getElementById('Outro').checked) {
+            genero = document.getElementById('Outro').value;
+        }
+
+        var dataNascimento = input_data_nascimento.value;
+        var pilotoSelecionado = document.getElementById("input_pilotoFavorito").value;
+        var equipeSelecionada = document.getElementById("input_EquipeQueTorce").value;
+        var corridaAoVivo;
+
+        if (document.getElementById('sim').checked) {
+            corridaAoVivo = document.getElementById('sim').value;
+        }
+        if (document.getElementById('nao').checked) {
+            corridaAoVivo = document.getElementById('nao').value;
+        }
+        // var listaErros = validarFormulario(nomeCompleto, genero, dataNascimento, pilotoFavorito, equipe, corridaAoVivo);
+        // nomeLogin,
+
+        // if (listaErros.length > 0) {
+        //     let mensagem = "";
+        //     for (var erro of listaErros) {
+        //         mensagem += erro + '\n';
+        //     }
+        //     showErrorToast(mensagem);
+        //     return;
+        // }
+
+        console.log("FORM NOME: ", nomeCompleto);
+        console.log("FORM GENERO: ", genero);
+        console.log("FORM DATA NASCIMENTO: ", dataNascimento);
+        console.log("FORM PILOTO FAVORITO: ", pilotoSelecionado);
+        console.log("FORM EQUIPE QUE TORCE: ", equipeSelecionada);
+        console.log("FORM CORRIDA AO VIVO: ", corridaAoVivo);
+        console.log('ID USUÁRIO: ' + idUsuario);
+
+        fetch("/formulario/enviarFormulario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                usuario: idUsuario,
+                nomeFormulario: nomeCompleto,
+                generoFormulario: genero,
+                dtaNascimentoFormulario: dataNascimento,
+                pilotoFavoritoFormulario: pilotoSelecionado,
+                equipeQueTorceFormulario: equipeSelecionada,
+                assistiuCorridaAoVivoFormulario: corridaAoVivo
+            })
+
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO formulario()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log("Chegou aqui");
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.NOME_USUARIO = json[0].nomeCompleto;
+                    sessionStorage.GENERO_USUARIO = json[0].genero;
+                    sessionStorage.DTA_NASCIMENTO_USUARIO = json[0].idUsuario;
+                    sessionStorage.PILOTO_FAVORITO_USUARIO = json[0].pilotoFavorito;
+                    sessionStorage.EQUIPE_USUARIO = json[0].equipe;
+                    sessionStorage.ASSISTIU_CORRIDA_USUARIO = json[0].corridaAoVivo;
+                    sessionStorage.ID_USUARIO = json[0].idUsuario;
+
+
+                    setTimeout(function () {
+                        window.location = "index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao enviar o formulario!");
+
+                if (resposta.status == 403) {
+                    showErrorToast(' informações inválidas');
+                }
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+    }
+
+    // function obterGeneroSelecionado() {
+    //     // Obter todos os inputs de rádio com name "genero"
+    //     // let opcoesGenero = document.getElementsByName("genero");
+
+    //     // Iterar sobre os inputs e verificar qual está selecionado
+    //     for (var i = 0; i < genero.length; i++) {
+    //         if (genero[i].checked) {
+    //             // O valor do input selecionado
+    //             var generoSelecionado = genero[i].value;
+
+    //             // Use o valor conforme necessário (por exemplo, imprimir no console)
+    //             console.log("Gênero selecionado: " + generoSelecionado);
+
+    //             // Pode retornar o valor se quiser utilizá-lo em outros lugares
+    //             return generoSelecionado;
+    //         }
+    //     }
+
+    //     // Se nenhum gênero estiver selecionado
+    //     console.log("Nenhum gênero selecionado");
+    //     return null;
+    // }
+
+
+
+
+
+    function showErrorToast(message) {
+        var toast = document.getElementById("errorToast");
+        toast.classList.add("show-toast");
+
+        toast.innerHTML = message;
+
+        setTimeout(function () {
+            toast.classList.remove("show-toast");
+        }, 3000);
+    }
+
+    // function validarFormulario(email, senha) {
+
+    //     var listaErros = [];
+
+    //     if (!validarEmail(email)) {
+    //         listaErros.push('Por favor, insira um email válido.');
+    //     }
+
+    //     if (senha.length < 6) {
+    //         listaErros.push('A senha deve ter pelo menos 6 caracteres.');
+    //     }
+
+    //     return listaErros;
+    // }
+
+    // function validarEmail(email) {
+    //     var indiceArroba = email.indexOf('@');
+    //     var indicePonto = email.lastIndexOf('.');
+
+    //     if (indiceArroba < 0 || indicePonto < 0 || indiceArroba > indicePonto || indiceArroba === 0 || indicePonto === email.length - 1) {
+    //         return false;
+    //     }
+
+    //     return true;
+    // }
+</script>

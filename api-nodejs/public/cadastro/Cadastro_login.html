@@ -153,20 +153,16 @@
             if (nomeVar == "" || emailVar == "" || senhaVar == "") {
                 cardErro.style.display = "block";
                 alert('Mensagem de erro para todos os campos em branco');
-
-                // finalizarAguardar();
                 return false;
-            } else {
-                // setInterval(sumirMensagem, 5000);
-            }
+            } 
+
+
             fetch("/usuarios/cadastrar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
                     nomeServer: nomeVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar,
@@ -176,16 +172,9 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        // cardErro.style.display = "block";
-
-                        // mensagem_erro.innerHTML =
-                        //   "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-                        // window.location = "index.html";
                         setTimeout(function () {
                             body.className = "entrar-js";
-                        }, 1000); // apenas para exibir o loading
-                        // limparFormulario();
-                        // finalizarAguardar();
+                        }, 1000);
                     } else {
                         throw "Houve um erro ao tentar realizar o cadastro!";
 
@@ -295,7 +284,7 @@
 
 
                         setTimeout(function () {
-                            window.location = "dashboard.html";
+                            window.location = sessionStorage.LATEST_PAGE || 'index.html';
                         }, 1000); // apenas para exibir o loading
 
                     });

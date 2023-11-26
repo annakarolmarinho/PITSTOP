@@ -9,7 +9,10 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO; // obtem o nome do usuário d
 function changeContentPageToQuiz() {
     var idUsuario = sessionStorage.ID_USUARIO; // obtem o id Usuario do session storage
     
+    console.log(window.location.pathname)
+
     if (idUsuario === null || idUsuario === undefined || idUsuario.trim() === "") { // verifica se o usuario não está "logado" para enviar ele a página de cadastro
+        sessionStorage.LATEST_PAGE = window.location.pathname;
         window.location = '../cadastro/Cadastro_login.html';
         return;
     }

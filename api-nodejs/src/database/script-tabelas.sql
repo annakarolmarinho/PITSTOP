@@ -24,29 +24,27 @@ create table formulario_user (
     dtaNascimento date,
     pilotoFavorito varchar (255),
     equipeQueTorce varchar (255),
-    assistiuCorridaAoVivo boolean,
+    assistiuCorridaAoVivo char(3),
     fkUsuarioForm int,
     constraint fkUsuarioForm foreign key (fkUsuarioForm) references usuario (idUsuario)
 );
 	
 
-create table quizPerguntas
-  (
-   idPergunta int primary key auto_increment,
-   perguntas JSON NOT NULL
-  );
+create table quizPerguntas(
+    idPergunta int primary key auto_increment,
+    perguntas JSON NOT NULL
+);
 
 
 
-create table quizResultado 
-    (
+create table quizResultado (
 	idResultado INT PRIMARY KEY AUTO_INCREMENT,
     resultado JSON NOT NULL,
-    fkUsuario int,
-	constraint fkUsuario foreign key (fkUsuario) references usuario (idUsuario),
+    fkUsuariof int,
+	constraint fkUsuariof foreign key (fkUsuariof) references usuario (idUsuario),
 	fkPergunta int,
 	constraint fkPergunta foreign key (fkPergunta) references quizPerguntas (idPergunta)
-    );
+);
 
 
 
@@ -54,7 +52,7 @@ create table quizResultado
 insert into usuario (email, senha, nomeCompleto) values 
 	('annaksilva@sptech.com', 'senha123', 'Anna Karolyna Marinho da Silva');
 
-insert into formulario_user (nomeCompletoForm, genero, dtaNascimento, pilotoFavorito, equipeQueTorce, assistiuCorridaAoVivo, fkUsuarioForm) values
+insert into formulario_user (nomeCompletoForm, genero, dtaNascimento, pilotoFavorito, equipeQueTorce, assistiuCorridaAoVivo, fkUsuarioF) values
     ('Anna Marinho', 'Feminino', '1995-09-10', 'Sebastian Vettel', 'Aston Martin', true, 1);
 
 
