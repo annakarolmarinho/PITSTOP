@@ -32,6 +32,6 @@ totalmente feito e inspirado na prototipagem.
 ![16](https://github.com/annakarolmarinho/PITSTOP/assets/142420755/c3265afd-c408-4dde-82af-df3bfb09c6b8)
 
 # Dashboard(analytics)
-penado informações do Banco de dados do Formulário e Quiz.
+pegando informações do Banco de dados do Formulário e Quiz.
 
 ![17](https://github.com/annakarolmarinho/PITSTOP/assets/142420755/6c90c1c2-c8d3-4bad-b164-e29b11f185c2)
