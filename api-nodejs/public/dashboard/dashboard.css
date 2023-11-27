@@ -1,0 +1,223 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+.content-body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.content-body .content-left {
+    background-color: #CB0006;
+    height: 100%;
+    width: 20%;
+}
+
+.content-body .content-left .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.content-body .content-left .header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5vh;
+    color: white;
+    font-weight: bold;
+}
+
+.content-body .content-left .content {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.content-body .content-left .content .user {
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+}
+
+.content-body .content-left .content .logout {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.content-body .content-left .content .logout a {
+    width: 100%;
+    height: 100%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    transition: 0.5s all;
+}
+
+.content-body .content-left .logout a p {
+    color: white;
+    font-size: 30px;
+}
+
+.content-body .content-left .help a {
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 480px;
+    padding: 0 3%;
+    gap: 3%;
+}
+
+/* CONTEUDO DA DIREITA */
+
+.content-body .content-right {
+    background-color: #FFFFFF;
+    height: 100%;
+    width: 80%;
+}
+
+.content-body .content-right .header {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: end;
+}
+
+.content-body .content-right .header .info-user {
+    font-size: 32px;
+    height: 100%;
+    gap: 5%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 5%;
+}
+
+.content-body .content-right .content {
+    height: 85%;
+    width: 100%;
+    overflow: auto;
+}
+
+.content-body .content-right .content .title {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-indent: 30%;
+}
+
+.content-body .content-right .cards {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.content-body .content-right .cards .card {
+    height: 100%;
+    width: 27%;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    transition: 0.4s all;
+}
+
+.content-body .content-right .cards .card:hover {
+    transform: scale(1.1);
+    transition: 0.4s all;
+}
+
+.content-body .content-right .cards .card .title-card {
+    height: 30%;
+    width: 100%;
+    font-weight: bold;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    text-indent: 20%;
+}
+
+.content-body .content-right .cards .card .value-card {
+    height: 50%;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    margin-left: 3%;
+}
+
+.content-body .content-right .cards .card .value-card #amount {
+    font-size: 60px;
+}
+
+.content-body .content-right .cards .card .value-card #decimals {
+    margin-top: 8%;
+    font-size: 20px;
+}
+
+/* #grafico {
+    display: flex;
+    width: 60%;
+    height: 40%;
+} */
+
+.container-grafico{
+    display: flex;
+    width: 100%;
+    height: 60%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 20px;
+    margin-left: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.grafico {
+    width: 100%;
+    height: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grafico .content-grafico {
+    width: 80%;
+    margin: 0 auto;
+    height: 80%;
+}

@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="png/favicon.ico">
+    <link rel="shortcut icon" href="../png/favicon.ico">
     <title>PITSTOP |Cadastro/Login </title>
     <link rel="stylesheet" href="Cadastro_login.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/8c17d13a2b.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -22,15 +21,14 @@
                 <li class="item"><a href="../Equipes/Equipes.html"> EQUIPES </a></li>
                 <li class="item"><a href="../Igualdade/Igualdade.html"> IGUALDADE </a></li>
                 <li class="item"><a href="../energia limpa/EnergiaLimpa.html"> ENERGIA LIMPA </a></li>
-                <li class="item"><a href="../QuizTime/"> QUIZTIME </a></li>
+                <li class="item"><a href="../QuizTime/QuizTime.html"> QUIZTIME </a></li>
                 <li class="item"><a href="../circuitos/circuitosMonaco.html"> CIRCUITOS </a></li>
                 <li class="item"><a href="../SobreMim/sobreMim.html"> SOBRE MIM </a></li>
-                <li class="item"><a href=""> ANALYTICS </a></li>
-                <li id="titulo"><a href="../Home/HOME.html">PITSTOP</a></li><img id="image" src="png/LOGO2.png" alt="">
+                <li id="titulo"><a href="../Home/HOME.html">PITSTOP</a></li><img id="image" src="../png/LOGO2.png" alt="">
 
             </ul>
             <div class="cadastro-logo">
-                <a href="Cadastro_login.html"><img id="image2" src="../png/cadastro.png" alt=""></a>
+                <a href="../cadastro/Cadastro_login.html"><img id="image2" src="../png/cadastro.png" alt=""></a>
             </div>
         </div>
     </div>
@@ -150,12 +148,25 @@
             var emailVar = input_email.value;
             var senhaVar = input_password.value;
 
-            if (nomeVar == "" || emailVar == "" || senhaVar == "") {
-                cardErro.style.display = "block";
-                alert('Mensagem de erro para todos os campos em branco');
-                return false;
-            } 
 
+
+            var listaErros = validarFormulario1( nomeVar, emailVar, senhaVar);
+            // if (nomeVar == "" || emailVar == "" || senhaVar == "") {
+            //     // cardErro.style.display = "block";
+            //     // alert('Mensagem de erro para todos os campos em branco');
+            //     showErrorToast(mensagem);
+            //     return;
+            //     return false;
+            // } 
+
+            if (listaErros.length > 0) {
+                let mensagem = "";
+                for (var erro of listaErros) {
+                    mensagem += erro + '\n';
+                }
+                showErrorToast(mensagem);
+                return false;
+            }
 
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -200,28 +211,30 @@
             }, 3000);
         }
 
-        function validarFormulario(nome, email, senha) {
+        function validarFormulario1(nomeVar, emailVar, senhaVar) {
 
             var listaErros = [];
 
-            if (!validarEmail(email)) {
-                listaErros.push('Por favor, insira um email válido.');
-            }
-
-            if (nome.trim() === '') {
+            if (nomeVar.trim() === "") {
                 listaErros.push('Por favor, insira um nome.');
             }
-
-            if (senha.length < 6) {
+            if (!validarEmail(emailVar)) {
+                listaErros.push('Por favor, insira um email válido.');
+            }
+            if (senhaVar.length < 6) {
                 listaErros.push('A senha deve ter pelo menos 6 caracteres.');
+            }
+            if( nomeVar.length >1 && nomeVar.length < 6){ 
+                listaErros.push('Por favor, insira um nome completo que seja válido');
             }
 
             return listaErros;
         }
 
-        function validarEmail(email) {
-            var indiceArroba = email.indexOf('@');
-            var indicePonto = email.lastIndexOf('.');
+
+        function validarEmail(emailVar) {
+            var indiceArroba = emailVar.indexOf('@');
+            var indicePonto = emailVar.lastIndexOf('.');
 
             if (indiceArroba < 0 || indicePonto < 0 || indiceArroba > indicePonto || indiceArroba === 0 || indicePonto === email.length - 1) {
                 return false;
@@ -284,7 +297,7 @@
 
 
                         setTimeout(function () {
-                            window.location = sessionStorage.LATEST_PAGE || 'index.html';
+                            window.location = '../dashboard/dashboard.html'; // REDIRECIONA PARA A DASHBOARD
                         }, 1000); // apenas para exibir o loading
 
                     });

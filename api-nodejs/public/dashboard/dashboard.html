@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dashboard.css">
+    <script src="https://kit.fontawesome.com/8c17d13a2b.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="../png/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="content-body">
+        <div class="content-left">
+            <div class="header">
+                <h1>PITSTOP</h1>
+            </div>
+            <div class="content">
+                <div class="logout">
+                    <a onclick="logout()">
+                        <p class="fa fa-sign-out" aria-hidden="true"></p>
+                        <p style="font-family: 'Oswald', sans-serif;">Logout</p>
+                    </a>
+                </div>
+            </div>
+            <div class="help">
+                <a>
+                    <i class="fa-solid fa-circle-question"></i>
+                    <p>Ajuda</p>
+                </a>
+            </div>
+        </div>
+        <div class="content-right">
+            <div class="header">
+                <div class="info-user">
+                    <p id="name-user">Usuário Legal da Silva</p>
+                    <p class="fa-solid fa-user"></p>
+                </div>
+            </div>
+            <div class="content">
+                <div class="title">
+                    <h1>Dasboard</h1>
+                </div>
+                <div class="cards">
+                    <div class="card 1">
+                        <div class="title-card">Balance</div>
+                        <div class="value-card">
+                            <span id="amount">$7.750</span>
+                            <span id="decimals">,00</span>
+                        </div>
+                    </div>
+                    <div class="card 2">
+
+                    </div>
+                    <div class="card 3">
+
+                    </div>
+                </div>
+                <div class="grafico">
+                    <canvas class="content-grafico" id="grafico">
+                        <!-- <canvas class="grafico" id="grafico"></canvas> -->
+                    </canvas>
+                </div>
+                <!-- <div class="container-grafico">
+                    
+                </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./dashboard.js"></script>

@@ -1,4 +1,7 @@
 var pageQuestion = 0;
+if (!sessionStorage.LATEST_PAGE_QUESTION) {
+    sessionStorage.LATEST_PAGE_QUESTION = 0;
+}
 
 // Os dados de sessionStorage: NOME_USUARIO, ID_USUARIO e EMAIL_USUARIO foram salvos durante o login nas linhas 292, 293 e 294 do Cadastro_login.html
 
@@ -8,7 +11,7 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO; // obtem o nome do usuário d
 
 function changeContentPageToQuiz() {
     var idUsuario = sessionStorage.ID_USUARIO; // obtem o id Usuario do session storage
-    
+
     console.log(window.location.pathname)
 
     if (idUsuario === null || idUsuario === undefined || idUsuario.trim() === "") { // verifica se o usuario não está "logado" para enviar ele a página de cadastro
@@ -25,21 +28,24 @@ function changeContentPageToQuiz() {
 }
 
 function showQuestion() {
+
     var questionElement = document.getElementById('question');
     var answerButtonsElement = document.getElementById('answer-buttons');
-    questionElement.textContent = questions[pageQuestion].question;
+    questionElement.textContent = questions[sessionStorage.LATEST_PAGE_QUESTION].question;
 
     // Remove previous answer buttons
     answerButtonsElement.innerHTML = '';
 
     // Add new answer buttons for the current question
-    for (var i = 0; i < questions[pageQuestion].answers.length; i++) {
+    for (var i = 0; i < questions[sessionStorage.LATEST_PAGE_QUESTION].answers.length; i++) {
         var answerButton = document.createElement('button');
         answerButton.classList.add('answer-button');
-        answerButton.textContent = questions[pageQuestion].answers[i].option;
+        answerButton.textContent = questions[sessionStorage.LATEST_PAGE_QUESTION].answers[i].option;
         answerButton.onclick = function () {
             checkAnswer(this);
         };
+
+        sessionStorage.LATEST_PAGE_QUESTION = sessionStorage.LATEST_PAGE_QUESTION;
         answerButtonsElement.appendChild(answerButton);
     }
 
@@ -52,16 +58,37 @@ function showQuestion() {
 
 function nextQuestion() {
     document.body.style.backgroundColor = "#000";
+
+    sessionStorage.LATEST_PAGE_QUESTION = Number(sessionStorage.LATEST_PAGE_QUESTION) + 1
+
     pageQuestion++;
-    if(pageQuestion > 9) {
+
+    if (Number(sessionStorage.LATEST_PAGE_QUESTION) >= 9) {
+        sessionStorage.LATEST_PAGE_QUESTION = 0;
+    }
+
+    if (pageQuestion > 9) {
+        console.log("chegou aqui")
+        registrarRespostasQuiz();
         window.location = "QuizTime.html"
-    }else {
+    } else {
         showQuestion();
     }
 }
 
 function checkAnswer(button) {
-    var isCorrect = questions[pageQuestion].answers.find(answer => answer.option === button.textContent).correct;
+
+    if (!sessionStorage.answersUsuario || sessionStorage.answersUsuario === undefined) {
+        var answers = [button.textContent];
+        sessionStorage.answersUsuario = JSON.stringify(answers);
+    } else {
+        var answersUsuarioLocalStorage = JSON.parse(sessionStorage.answersUsuario);
+        answersUsuarioLocalStorage.push(button.textContent);
+        sessionStorage.answersUsuario = JSON.stringify(answersUsuarioLocalStorage);
+    }
+
+
+    var isCorrect = questions[sessionStorage.LATEST_PAGE_QUESTION].answers.find(answer => answer.option === button.textContent).correct;
 
     // Example: Change button color based on correctness
     if (isCorrect) {
@@ -83,7 +110,7 @@ function checkAnswer(button) {
     var nextQuestionButton = document.getElementById('next-question');
     nextQuestionButton.style.display = 'block';
     nextQuestionButton.textContent = 'Próxima Pergunta (' + score + ' ponto' + (score !== 1 ? 's' : '') + ')';
-    if(pageQuestion > 8) {
+    if (pageQuestion > 8) {
         nextQuestionButton.textContent = 'Finalizar Quiz'
     }
 }
@@ -183,9 +210,28 @@ var questions = [
 ];
 
 
+function registrarRespostasQuiz() {
+    var usuario = sessionStorage.ID_USUARIO;
+    var respostasUsuario = JSON.parse(sessionStorage.answersUsuario);
+    
+    if (usuario !== undefined && respostasUsuario !== undefined) {
 
-// lógica para obter a pergunta - OK
-// lógica para passar para a próxima pergunta e incrementar a pergunta para ir para a próxima - NOK
-// logica para obter obter as respostas e passa-las nos botões - NOK
-// lógica para obter a resposta certa, pode armazenar em uma variável, se o cara apertou no botão certo, troca a cor do botão pra verde
-// 
+        sessionStorage.removeItem('answersUsuario');
+        sessionStorage.removeItem('LATEST_PAGE_QUESTION');
+
+        fetch('/quiz', {
+            body: JSON.stringify({
+                respostas: respostasUsuario,
+                usuario: usuario,
+            }),
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then((res) => {
+            res.json(json => {
+                console.log(res);
+            })
+        }).catch();
+    }
+}

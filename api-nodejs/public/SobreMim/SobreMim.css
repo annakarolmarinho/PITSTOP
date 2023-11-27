@@ -96,7 +96,7 @@
 
 .aboutMe {
     display: flex;
-    margin-top: 90px;
+    margin-top: 60px;
     margin-left: 330px;
 
 }
@@ -111,4 +111,38 @@
     bottom: 640px;
     left: 880px;
     text-align: justify;
+}
+
+
+ .contatos {
+    font-family: 'Oswald', sans-serif;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    bottom: 370px;
+    color: #ffffff;
+    left: 600px;
+
+}
+
+.contato1, .contato2 {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.fa-brands {
+    margin-right: 10px; /* Ajuste a margem conforme necessário para separar o ícone do texto */
+}
+
+.link {
+    margin: 0;
+}
+
+.contato2{
+    position: relative;
+    left: 530px;
+    bottom: 18px;
+    
 }
