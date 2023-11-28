@@ -16,23 +16,49 @@ function logout() {
 }
 
 loadChart();
+kpiGenero();
+kpiRespostas();
 
-function somaNormal(x, y) {
-    return Number(x) + Number(y);
+
+
+
+function obterDadosDashboardGenero() {
+
+
+    return fetch("/dashboard/genero")
+        .then(function (res) {
+            return res.json().then(function (generos) {
+                return {
+                    genero: generos[0]
+                };
+            })
+                .catch(function (error) {
+                    console.error("Erro ao obter dados:", error);
+                    throw error
+                });
+
+        });
 }
 
-function somaPromise(x, y) {
-    return new Promise((resolve, reject) => {
-        const resultado = Number(x) + Number(y);
-        resolve(resultado);
-    })
+
+
+
+function kpiGenero() {
+    obterDadosDashboardGenero().then(function (dadosG) {
+        var resultadoElemento = document.getElementById("resultadoGenero");
+
+
+        var titleCard = document.getElementById("title-card");
+        titleCard.innerHTML += dadosG.genero.genero.toUpperCase()
+
+        var gender = document.getElementById("amount-gender");
+        gender.innerHTML = dadosG.genero.generoMaisEnviado;
+    });
 }
 
-console.log('somaNormal: ' + somaNormal(5, 5));
-somaPromise(5, 5).then(soma => console.log(soma));
-somaPromise(5, 5).then(function (soma) {
-    console.log(soma);
-}).catch(err => console.log(err));
+
+
+// function 
 
 
 function obterDadosDashboardPilotos() {
@@ -60,6 +86,7 @@ function obterDadosDashboardPilotos() {
         });
 }
 
+
 function loadChart() {
 
     obterDadosDashboardPilotos().then(function (dados) {
@@ -70,7 +97,7 @@ function loadChart() {
             data: {
                 labels: dados.nomes,
                 datasets: [{
-                    label: 'Vendas',
+                    label: 'Pilotos mais votados como favoritos',
                     data: dados.votos,
                     backgroundColor: 'rgb(203, 0, 6)',
                     borderColor: 'rgba(75, 192, 192, 1)',
@@ -88,3 +115,98 @@ function loadChart() {
     });
 
 }
+
+
+var respostasCorretas = [
+    "Lewis Hamilton",
+    "Ferrari",
+    "1950",
+    "3",
+    "Autódromo Nazionale Monza",
+    "Alain Prost",
+    "10",
+    "Circuit de Spa-Francorchamps",
+    "Max Verstappen",
+    "1 ponto",
+];
+
+
+function obterRespostasCorretas() {
+
+    return fetch("/dashboard/respostas")
+        .then(function (res) {
+            return res.json().then(function (respostasUsuario) {
+                var jsonStringify = JSON.stringify(respostasUsuario);
+                var array = JSON.parse(jsonStringify);
+
+                var resultadosQuiz = array.map((resultadoQuiz) => {
+                    var contagemAcertos = 0;
+
+                    var resultadoParsed = JSON.parse(resultadoQuiz.resultado);
+
+                    for (var i = 0; i < resultadoParsed.length; i++) {
+                        if (respostasCorretas[i] === resultadoParsed[i]) {
+                            contagemAcertos++;
+                        }
+                    }
+
+                    return {
+                        idResultado: resultadoQuiz.idResultado,
+                        resultado: resultadoQuiz.resultado,
+                        contagemAcertos,
+                        nomeUsuario: resultadoQuiz.nomeCompleto.trim().split(' ')[0],
+                    };
+
+                });
+                return resultadosQuiz;
+            });
+        })
+
+        .catch(function (error) {
+            console.error("Erro ao obter dados:", error);
+            throw error;
+        });
+
+}
+
+function kpiRespostas() {
+    obterRespostasCorretas().then(function (resultadosQuiz) {
+        var table = document.getElementById("table-results");
+
+        resultadosQuiz.sort((a,b) => {
+            return a.contagemAcertos - b.contagemAcertos;
+        })
+
+
+        // []
+
+        // const index in []
+        //
+        /*
+            array[0]
+            array[1]
+            array[2]
+            array[3]
+        */
+
+        for (const result in resultadosQuiz) {    
+            var row = table.insertRow(1);
+            var cell1 = row.insertCell(0); // nome
+            var cell2 = row.insertCell(1); // quantidadeAcerto
+            var cell3 = row.insertCell(2); // posição
+            
+            cell1.innerHTML = resultadosQuiz[result].nomeUsuario;
+            cell2.innerHTML = resultadosQuiz[result].contagemAcertos;
+            cell3.innerHTML = `${Number(resultadosQuiz.length - result)}º`
+        }
+    });
+}
+
+// {
+//     "idResultado": 2,
+//     "resultado": "[\"Ayrton Senna\", \"Mercedes\", \"1962 \", \"1\", \"Autódromo Nazionale Monza \", \"Alain Prost\", \"9\", \" Circuit de Spa-Francorchamps\", \"Fernando Alonso\", \"Ayrton Senna\"]",
+//     "contagemAcertos": 1,
+//     "nomeUsuario": "Anna"
+// }
+
+

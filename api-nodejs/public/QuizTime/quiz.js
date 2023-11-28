@@ -31,6 +31,7 @@ function showQuestion() {
 
     var questionElement = document.getElementById('question');
     var answerButtonsElement = document.getElementById('answer-buttons');
+    console.log(sessionStorage.LATEST_PAGE_QUESTION);
     questionElement.textContent = questions[sessionStorage.LATEST_PAGE_QUESTION].question;
 
     // Remove previous answer buttons
@@ -44,8 +45,6 @@ function showQuestion() {
         answerButton.onclick = function () {
             checkAnswer(this);
         };
-
-        sessionStorage.LATEST_PAGE_QUESTION = sessionStorage.LATEST_PAGE_QUESTION;
         answerButtonsElement.appendChild(answerButton);
     }
 
@@ -61,11 +60,9 @@ function nextQuestion() {
 
     sessionStorage.LATEST_PAGE_QUESTION = Number(sessionStorage.LATEST_PAGE_QUESTION) + 1
 
-    pageQuestion++;
+    console.log(sessionStorage.LATEST_PAGE_QUESTION);
 
-    if (Number(sessionStorage.LATEST_PAGE_QUESTION) >= 9) {
-        sessionStorage.LATEST_PAGE_QUESTION = 0;
-    }
+    pageQuestion++;
 
     if (pageQuestion > 9) {
         console.log("chegou aqui")
@@ -110,7 +107,7 @@ function checkAnswer(button) {
     var nextQuestionButton = document.getElementById('next-question');
     nextQuestionButton.style.display = 'block';
     nextQuestionButton.textContent = 'Próxima Pergunta (' + score + ' ponto' + (score !== 1 ? 's' : '') + ')';
-    if (pageQuestion > 8) {
+    if (pageQuestion > 9) {
         nextQuestionButton.textContent = 'Finalizar Quiz'
     }
 }
@@ -215,6 +212,8 @@ function registrarRespostasQuiz() {
     var respostasUsuario = JSON.parse(sessionStorage.answersUsuario);
     
     if (usuario !== undefined && respostasUsuario !== undefined) {
+
+        console.log(respostasUsuario);
 
         sessionStorage.removeItem('answersUsuario');
         sessionStorage.removeItem('LATEST_PAGE_QUESTION');
