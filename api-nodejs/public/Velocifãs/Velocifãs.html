@@ -127,22 +127,25 @@
             <p>Informações enviadas. Obrigado por ajudar!</p>
         </div>
     </div>
-
+    <div class="block" id="div_block"></div>
+    <div id="div_free"></div>
 </body>
 
 </html>
 <script>
 
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    if (idUsuario === null || idUsuario === undefined || idUsuario.trim() === "") {
+        sessionStorage.LATEST_NAME = window.location.pathname;
+        window.location = '../cadastro/Cadastro_login.html';
+    }
+
+    validarUsuarioPodeResponderFormulario();
+
+
     function submit() {
 
-
-        var idUsuario = sessionStorage.ID_USUARIO;
-
-        if (idUsuario === null || idUsuario === undefined || idUsuario.trim() === "") {
-            sessionStorage.LATEST_NAME = window.location.pathname;
-            window.location = '../cadastro/Cadastro_login.html';
-            return;
-        }
 
         console.log(idUsuario);
 
@@ -270,6 +273,18 @@
         return listaErros;
     }
 
+    async function validarUsuarioPodeResponderFormulario() {
+        await fetch(`/formulario?idUsuario=${sessionStorage.ID_USUARIO}`)
+            .then(response => {
+                if (response.status === 412) { // não pode responder
+                    div_block.innerHTML = `<span id= "block-text ">Você já mandou este Formulário!</span>`;
+                    
+                } else {
+                    div_block.remove();
+
+                }
+            }).catch(err => console.log(err));
+    }
     // function validarEmail(email) {
     //     var indiceArroba = email.indexOf('@');
     //     var indicePonto = email.lastIndexOf('.');
@@ -300,4 +315,5 @@
             window.location = "../index.html";
         }, 500); // apenas para exibir o loading
     }
+
 </script>

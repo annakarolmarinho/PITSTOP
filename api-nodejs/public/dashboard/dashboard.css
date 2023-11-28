@@ -267,3 +267,25 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.home{
+    background-color: #CB0006;
+    width: 200px;
+    height: 60px;
+    text-decoration: none;
+    color: white;
+    border-radius: 20px;
+    position: relative;
+    right: 300px;
+    top: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    border:  1px solid rgb(255, 255, 255);
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.text{
+    display: flex;
+    margin-top: 14px;
+    margin-left: 14px;
+}

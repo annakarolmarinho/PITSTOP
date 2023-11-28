@@ -47,7 +47,29 @@ function enviarFormulario(req, res){
     }
 
 }
+
+function obterFormularioUsuario(req, res){
+    var  usuario = req.query.idUsuario;
+
+    if (usuario === undefined) {
+        res.status(400).send('Usuário não especificado');
+    } else {
+        formularioModel.obterRespostaUsuarioFormularioLimit1(usuario)
+        .then(resultado => {
+            console.log("tamanho da resposta", resultado.length);
+            if (resultado.length >= 1) {
+                res.status(412).send('Usuário já respondeu');
+            } else {
+                res.status(200).send();
+            }
+        }).catch(err => res.status(500).json(err));
+    }
+    
+}
+
 module.exports = {
-   enviarFormulario
+   enviarFormulario,
+   obterFormularioUsuario
+   
 }
 

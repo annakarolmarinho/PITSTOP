@@ -12,6 +12,16 @@ function enviarFormulario(nomeCompletoForm, genero, dtaNascimento, pilotoFavorit
     return database.executar(instrucao);
 }
 
+function obterRespostaUsuarioFormularioLimit1(fkUsuariof) {
+    var instrucao = `
+        select * from formulario_user where fkUsuariof = ${fkUsuariof} limit 1; 
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao)
+}
+
 module.exports = {
-    enviarFormulario
+    enviarFormulario,
+    obterRespostaUsuarioFormularioLimit1
 };
