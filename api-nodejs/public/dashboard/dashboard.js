@@ -178,16 +178,7 @@ function kpiRespostas() {
         })
 
 
-        // []
 
-        // const index in []
-        //
-        /*
-            array[0]
-            array[1]
-            array[2]
-            array[3]
-        */
 
         for (const result in resultadosQuiz) {    
             var row = table.insertRow(1);
@@ -201,12 +192,5 @@ function kpiRespostas() {
         }
     });
 }
-
-// {
-//     "idResultado": 2,
-//     "resultado": "[\"Ayrton Senna\", \"Mercedes\", \"1962 \", \"1\", \"Autódromo Nazionale Monza \", \"Alain Prost\", \"9\", \" Circuit de Spa-Francorchamps\", \"Fernando Alonso\", \"Ayrton Senna\"]",
-//     "contagemAcertos": 1,
-//     "nomeUsuario": "Anna"
-// }
 
 

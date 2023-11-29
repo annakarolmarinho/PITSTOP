@@ -3,7 +3,7 @@ if (!sessionStorage.LATEST_PAGE_QUESTION) {
     sessionStorage.LATEST_PAGE_QUESTION = 0;
 }
 
-// Os dados de sessionStorage: NOME_USUARIO, ID_USUARIO e EMAIL_USUARIO foram salvos durante o login nas linhas 292, 293 e 294 do Cadastro_login.html
+
 
 // Foi feito uma alteração no html que inclui um elemento do tipo <b> para incluir o usuário
 var b_usuario = document.getElementById("nome_usuario"); // essa linha obtem o elemento <b> do html pelo id
@@ -20,6 +20,8 @@ function changeContentPageToQuiz() {
         return;
     }
 
+    sessionStorage.removeItem('LATEST_PAGE');
+
     var contentAll = document.getElementById('content-all');
     contentAll.remove();
     var nextQuestionButton = document.getElementById('next-question');
@@ -34,10 +36,10 @@ function showQuestion() {
     console.log(sessionStorage.LATEST_PAGE_QUESTION);
     questionElement.textContent = questions[sessionStorage.LATEST_PAGE_QUESTION].question;
 
-    // Remove previous answer buttons
+
     answerButtonsElement.innerHTML = '';
 
-    // Add new answer buttons for the current question
+   
     for (var i = 0; i < questions[sessionStorage.LATEST_PAGE_QUESTION].answers.length; i++) {
         var answerButton = document.createElement('button');
         answerButton.classList.add('answer-button');
@@ -48,7 +50,7 @@ function showQuestion() {
         answerButtonsElement.appendChild(answerButton);
     }
 
-    // Show the question and answer buttons
+
     questionElement.style.display = 'block';
     answerButtonsElement.style.display = 'grid';
     var nextQuestionButton = document.getElementById('next-question');
@@ -75,35 +77,35 @@ function nextQuestion() {
 
 function checkAnswer(button) {
 
-    if (!sessionStorage.answersUsuario || sessionStorage.answersUsuario === undefined) {
+    if (sessionStorage.answersUsuario || sessionStorage.answersUsuario === undefined) {
         var answers = [button.textContent];
         sessionStorage.answersUsuario = JSON.stringify(answers);
     } else {
         var answersUsuarioLocalStorage = JSON.parse(sessionStorage.answersUsuario);
         answersUsuarioLocalStorage.push(button.textContent);
-        sessionStorage.answersUsuario = JSON.stringify(answersUsuarioLocalStorage);
+        sessionStorage.answersUsuario = JSON.stringify(answersUsuarioLocalStorage);d
     }
 
 
     var isCorrect = questions[sessionStorage.LATEST_PAGE_QUESTION].answers.find(answer => answer.option === button.textContent).correct;
 
-    // Example: Change button color based on correctness
+    
     if (isCorrect) {
-        button.style.backgroundColor = '#4CAF50'; // Correct answer color
-        document.body.style.backgroundColor = '#4CAF50'; // Change background color to green
-        score++; // Increment the score for correct answers
+        button.style.backgroundColor = '#4CAF50'; 
+        document.body.style.backgroundColor = '#4CAF50'; 
+        score++; 
     } else {
-        button.style.backgroundColor = '#FF5733'; // Incorrect answer color
-        document.body.style.backgroundColor = '#FF5733'; // Change background color to red
+        button.style.backgroundColor = '#FF5733'; 
+        document.body.style.backgroundColor = '#FF5733'; 
     }
 
-    // Disable answer buttons after an answer is selected
+    // Disabilita o botão para caso a resposta esteja correta
     var answerButtons = document.querySelectorAll('.answer-button');
     answerButtons.forEach(function (btn) {
         btn.disabled = true;
     });
 
-    // Enable "Next Question" button and display score
+    
     var nextQuestionButton = document.getElementById('next-question');
     nextQuestionButton.style.display = 'block';
     nextQuestionButton.textContent = 'Próxima Pergunta (' + score + ' ponto' + (score !== 1 ? 's' : '') + ')';
@@ -112,7 +114,7 @@ function checkAnswer(button) {
     }
 }
 
-var score = 0; // Variable to store the score
+var score = 0; 
 var questions = [
     {
         question: "Quem detém o recorde de mais títulos mundiais na Fórmula 1?",

@@ -297,7 +297,7 @@
 
 
                         setTimeout(function () {
-                            window.location = '../dashboard/dashboard.html'; // REDIRECIONA PARA A DASHBOARD
+                            window.location = sessionStorage.LATEST_PAGE !== undefined ? sessionStorage.LATEST_PAGE : '../dashboard/dashboard.html'; // REDIRECIONA PARA A DASHBOARD
                         }, 1000); // apenas para exibir o loading
 
                     });

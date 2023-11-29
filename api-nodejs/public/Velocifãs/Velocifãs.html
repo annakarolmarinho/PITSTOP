@@ -176,8 +176,7 @@
         }
 
         var listaErros = validarFormulario(nomeCompleto, dataNascimento);
-        // var listaErros = validarFormulario(nomeCompleto, genero, dataNascimento, pilotoFavorito, equipe, corridaAoVivo);
-        // nomeLogin,
+        
 
         if (listaErros.length > 0) {
             let mensagem = "";
@@ -236,7 +235,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    // finalizarAguardar(texto);
+                    
                 });
             }
 
@@ -285,25 +284,7 @@
                 }
             }).catch(err => console.log(err));
     }
-    // function validarEmail(email) {
-    //     var indiceArroba = email.indexOf('@');
-    //     var indicePonto = email.lastIndexOf('.');
-
-    //     if (indiceArroba < 0 || indicePonto < 0 || indiceArroba > indicePonto || indiceArroba === 0 || indicePonto === email.length - 1) {
-    //         return false;
-    //     }
-
-    //     return true;
-    // }
-    // document.addEventListener("DOMContentLoaded", function () {
-    // setTimeout(openModal, 2000);
-
-
-    // setTimeout(function () {
-    //     closeModal();
-    //     window.location.href = "../index.html";
-    // }, 4000);
-    // });
+    
 
     function openModal() {
         document.getElementById("myModal").style.display = "block";
