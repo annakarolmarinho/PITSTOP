@@ -84,6 +84,28 @@ select * from usuario;
 select * from formulario_user;
 select * from quizPerguntas;
 select * from quizResultado;
- 
 
-
+    -- piloto favorito --
+SELECT fu.pilotoFavorito as 'pilotoFavorito', COUNT(*) as total
+        FROM PITSTOP.formulario_user fu 
+        GROUP by fu.pilotoFavorito;
+        
+        
+    -- genero --    
+         SELECT genero, COUNT(*) as 'generoMaisEnviado'
+    FROM formulario_user
+    JOIN usuario ON idUsuario = fkUsuariof
+    GROUP BY genero
+    ORDER BY COUNT(*) DESC
+    LIMIT 1;
+    
+    
+    -- respostas --
+     SELECT
+            qr.idResultado,
+            qr.resultado,
+            qr.fkUsuario,
+            u.nomeCompleto
+        FROM PITSTOP.quizResultado qr 
+        INNER JOIN usuario u
+        ON qr.fkUsuario = u.idUsuario;
